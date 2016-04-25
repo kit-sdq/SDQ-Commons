@@ -9,4 +9,5 @@ Require-Bundle: com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro
-Export-Package: edu.kit.ipd.sdq.commons.util.java.util
+Export-Package: edu.kit.ipd.sdq.commons.util.java.lang,
+ edu.kit.ipd.sdq.commons.util.java.util
