@@ -1,4 +1,4 @@
-package edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change.impl
+package edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change
 
 import org.eclipse.emf.ecore.change.impl.ChangeDescriptionImpl
 import org.eclipse.emf.ecore.change.ChangeDescription
