@@ -1,11 +1,15 @@
 package edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change.impl
 
+import java.util.HashMap
 import java.util.Map
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.change.ChangeKind
 import org.eclipse.emf.ecore.change.impl.ChangeDescriptionImpl
-import java.util.HashMap
+import org.eclipse.emf.ecore.resource.Resource
+
 import static extension edu.kit.ipd.sdq.commons.util.java.lang.ObjectUtil.*
+import org.eclipse.emf.ecore.change.ListChange
 
 /**
  * A utility class providing extension methods to hide details of backward to forward change description conversion
@@ -18,10 +22,10 @@ class ChangeDescriptionImplUtil {
 	}
 	
 	/**
-	 * Returns a map from objects to their old container and the containment reference used for it
+	 * Returns a map from objects to their container and the containment reference used for it
 	 */
-	def static Map<EObject, Pair<EObject, EReference>> getContainmentBeforeReversion(ChangeDescriptionImpl changeDescription) {
-		return BreakEncapsulationOfChangeDescriptionImplUtil.getContainmentBeforeReversion(changeDescription)			
+	def static Map<EObject, Pair<EObject, EReference>> getContainmentsBeforeReversion(ChangeDescriptionImpl changeDescription) {
+		return BreakEncapsulationOfChangeDescriptionImplUtil.getContainmentsBeforeReversion(changeDescription)			
 	}
 	
 	/**
@@ -35,10 +39,10 @@ class ChangeDescriptionImplUtil {
 		}
 	
 		/**
-		 * Returns a map from objects to their old container and the containment reference used for it.
+		 * Returns a map from objects to their container and the containment reference used for it.
 		 */
-		static def Map<EObject, Pair<EObject, EReference>> getContainmentBeforeReversion(ChangeDescriptionImpl changeDescription) {
-			val containmentBeforeReversion = new HashMap<EObject, Pair<EObject, EReference>>();
+		static def Map<EObject, Pair<EObject, EReference>> getContainmentsBeforeReversion(ChangeDescriptionImpl changeDescription) {
+			val containmentBeforeReversion = newHashMap();
 			// We have to invoke the protected method changeDescription.getOldContainmentInformation() using reflection
 			// in order to avoid a VerifyError due to "Bad access to protected data", which would
 			// occur if we move this class to the same package as ChangeDescriptionImpl
@@ -52,5 +56,28 @@ class ChangeDescriptionImplUtil {
 			}
 			return containmentBeforeReversion
 		}
+	}
+	
+	/**
+	 * Returns a map from root objects to their resource.
+	 */	
+	def static Map<EObject, Resource> getResourcesBeforeReversion(ChangeDescriptionImpl changeDescription) {
+		val resourceBeforeReversion = newHashMap()
+		for (resourceChange : changeDescription?.resourceChanges) {
+			for (listChange : resourceChange.listChanges) {
+				if (isRemoveInForwardDirection(listChange)) {
+					val removedRootElements = listChange.referenceValues
+					for (removedRoot : removedRootElements) {
+						val resourceAfterChange = removedRoot.eResource
+						resourceBeforeReversion.put(removedRoot, resourceAfterChange)
+					}
+				}
+			}
+		}
+		return resourceBeforeReversion
+	}
+
+	def private static boolean isRemoveInForwardDirection(ListChange listChange) {
+		return listChange.kind.value == ChangeKind.ADD
 	}
 }
