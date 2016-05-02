@@ -49,10 +49,14 @@ class ChangeDescriptionImplUtil {
 			val resultMap = changeDescription.invokeDeclaredMethodWithoutParameters("getOldContainmentInformation",HashMap)
 			val Map<EObject, OldContainmentInformation> oldContainmentUsingProtectedInnerClass =  resultMap as Map<EObject, OldContainmentInformation>
 			for(entry : oldContainmentUsingProtectedInnerClass.entrySet) {
-				val oldContainmentInformation = entry.value
-				val container = oldContainmentInformation.container
-				val containmentReference = oldContainmentInformation.containmentFeature
-				containmentBeforeReversion.put(entry.key, new Pair(container, containmentReference))
+				val eObject = entry.key
+//				val oldContainmentInformation = entry.value
+//				val container = oldContainmentInformation.container
+//				val containmentReference = oldContainmentInformation.containmentFeature
+// FIXME MK remove whole old containment stuff if it is not needed?
+				val container = eObject.eContainer()
+				val containmentReference = eObject.eContainmentFeature()
+				containmentBeforeReversion.put(eObject, new Pair(container, containmentReference))
 			}
 			return containmentBeforeReversion
 		}
