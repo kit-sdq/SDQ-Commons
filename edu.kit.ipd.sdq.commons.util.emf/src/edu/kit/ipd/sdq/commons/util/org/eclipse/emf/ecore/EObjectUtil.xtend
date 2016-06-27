@@ -15,6 +15,14 @@ class EObjectUtil {
 	private new() {
 	}
 	
+	/**
+	 * Returns the list of values for the feature with the given name of the given eObject if it is multi-valued and <code>null</code> otherwise.
+	 */
+	def static List<?> getFeatureValues(EObject eObject, String featureName) {
+		val feature = eObject.eClass.getEStructuralFeature(featureName)
+		return getFeatureValues(eObject, feature)
+	}
+	
 	// FIXME MK replace calls to EcoreBridge.getFeatureValuesIfManyTyped with calls to this method
 	/**
 	 * Returns the list of values for the given feature of the given eObject if it is multi-valued and <code>null</code> otherwise.
