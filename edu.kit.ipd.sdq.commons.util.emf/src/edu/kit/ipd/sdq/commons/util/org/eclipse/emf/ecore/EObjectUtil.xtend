@@ -5,6 +5,7 @@ import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.resource.Resource
 
 /**
  * A utility class providing extension methods for EObjects
@@ -66,6 +67,32 @@ class EObjectUtil {
 		} else {
 			return new BasicEList(#[value])
 		}
+	}
+	
+    /**
+     * Returns an iterable for iterating over all direct and indirect contents of the given EObject.
+     *
+     * @param eObject
+     *            container EObject
+     * @return a direct and indirect content iterating iterable
+     *
+     * @see org.eclipse.emf.ecore.EObject#eAllContents() EObject.eAllContents()
+     */
+    def static Iterable<EObject> getAllContents(EObject eObject) {
+        return eObject.eAllContents().toIterable()
+    }
+    
+	/**
+	 * Returns an iterable for iterating over all direct and indirect contents of the given Resource.
+	 *
+	 * @param resource
+	 *            container Resource
+	 * @return a direct and indirect content iterating iterable
+	 *
+	 * @see org.eclipse.emf.ecore.Resource#eAllContents() Resource.eAllContents()
+	 */
+	def static Iterable<EObject> getAllContents(Resource resource) {
+	    return resource.getAllContents().toIterable()
 	}
 }
 				
