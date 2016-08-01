@@ -4,7 +4,7 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 
 import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.EObjectUtil.getFeatureValues
-import static extension edu.kit.ipd.sdq.vitruvius.framework.util.bridges.CollectionBridge.mapFixed
+import static extension edu.kit.ipd.sdq.commons.util.java.util.ListUtil.mapFixed
 import static extension org.palladiosimulator.mdsdprofiles.api.StereotypeAPI.getStereotypeApplications
 
 /**
