@@ -1,6 +1,8 @@
 package edu.kit.ipd.sdq.commons.util.java.util
 
 import java.util.List
+import org.eclipse.xtext.xbase.lib.Functions.Function1
+import java.util.ArrayList
 
 /**
  * A utility class providing extension methods for Lists
@@ -22,5 +24,13 @@ class ListUtil {
 		} else {
 			return element
 		}
+	}
+	
+	def static final <T, R> List<R> mapFixed(Iterable<T> original, Function1<? super T, ? extends R> transformation) {
+		val list = new ArrayList<R>();
+		for (T o : original) {
+			list.add(transformation.apply(o));
+		}
+		return list;
 	}
 }
