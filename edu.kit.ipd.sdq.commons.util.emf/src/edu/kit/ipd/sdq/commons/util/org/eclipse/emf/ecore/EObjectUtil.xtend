@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.EAttribute
+import org.eclipse.emf.ecore.EReference
 
 /**
  * A utility class providing extension methods for EObjects
@@ -93,6 +95,30 @@ class EObjectUtil {
 	 */
 	def static Iterable<EObject> getAllContents(Resource resource) {
 	    return resource.getAllContents().toIterable()
+	}
+	
+	/** 
+	 * Returns the {@link EAttribute} of the {@link EClass} of the given {@link EObject} with the given name.
+	 * 
+	 * @param eObject the {@link EObject} to get the attribute definition from
+	 * @param attributeName the name of the attribute the find
+	 * 
+	 * @return the {@link EAttribute} of the objects {@link EClass} with the given name 
+	 */
+	def public static EAttribute getAttributeByName(EObject eObject, String attributeName) {
+		return eObject.eClass.getEAllAttributes.filter[attribute|attribute.name.equals(attributeName)].iterator.next
+	}
+
+	/** 
+	 * Returns the {@link EReference} of the {@link EClass} of the given {@link EObject} with the given name.
+	 * 
+	 * @param eObject the {@link EObject} to get the reference definition from
+	 * @param referenceName the name of the reference the find
+	 * 
+	 * @return the {@link EReference} of the objects {@link EClass} with the given name 
+	 */
+	def public static EReference getReferenceByName(EObject eObject, String referenceName) {
+		return eObject.eClass.getEAllReferences.filter[reference|reference.name.equals(referenceName)].iterator.next
 	}
 }
 				
