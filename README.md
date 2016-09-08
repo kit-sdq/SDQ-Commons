@@ -2,6 +2,10 @@
 
 This repository contains commons projects providing utility functionality that is not project-specific.
 
+## Project Development
+
+The commons projects in this repository are developed and intended to be used by members of the Chair for Software Design and Quality (SDQ) at the Karlsrule Institute of Technology (KIT): http://sdq.ipd.kit.edu/
+
 ## Project and Implementation Structure
 
 * Each project is specific for one domain, e.g. Java or EMF. 
