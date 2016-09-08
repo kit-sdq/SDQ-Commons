@@ -4,7 +4,7 @@ This repository contains commons projects providing utility functionality that i
 
 ## Project Development
 
-The commons projects in this repository are developed and intended to be used by members of the Chair for Software Design and Quality (SDQ) at the Karlsrule Institute of Technology (KIT): http://sdq.ipd.kit.edu/
+The commons projects in this repository are developed and intended to be used by members of the Chair for Software Design and Quality (SDQ) at the Karlsruhe Institute of Technology (KIT): http://sdq.ipd.kit.edu/
 
 ## Project and Implementation Structure
 
