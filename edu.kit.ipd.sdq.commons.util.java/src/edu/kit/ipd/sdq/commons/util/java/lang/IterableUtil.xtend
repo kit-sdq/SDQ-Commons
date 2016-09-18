@@ -20,4 +20,29 @@ class IterableUtil {
 		}
 		return list
 	}
+	
+	/**
+	 * Returns the concatenated string representation of the elements in the given iterable. 
+	 * The {@code separator} is used to between each pair of entries in the input.
+	 * 
+	 * @param iterable
+	 *            the iterable. May not be <code>null</code>.
+	 * @param before
+	 *            prepends the resulting string if the iterable contains at least one element. May be <code>null</code> which is equivalent to passing an empty string.
+	 * @param separator
+	 *            the separator. May be <code>null</code> which is equivalent to passing an empty string.
+	 * @param after
+	 *            appended to the resulting string if the iterable contain at least one element. May be <code>null</code> which is equivalent to passing an empty string.
+	 * @return the string representation of the iterable's elements. Never <code>null</code>.
+	 *
+	 * @see org.eclipse.xtext.xbase.lib.IterableExtensions#join(Iterable, CharSequence, CharSequence, CharSequence, Functions.Function1)
+	 */
+	public static final def String join(Iterable<? extends CharSequence> iterable, CharSequence before, CharSequence separator, CharSequence after) '''«
+	FOR cs : iterable
+		BEFORE before
+		SEPARATOR separator
+		AFTER after
+		»«cs»«
+	ENDFOR»'''
+	
 }
