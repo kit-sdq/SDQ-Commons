@@ -45,4 +45,16 @@ class IterableUtil {
 		»«cs»«
 	ENDFOR»'''
 	
+	/**
+	 * Returns the number of times the element occurs in the collection.
+	 */
+	def static <T> int count(Iterable<T> coll, T element) {
+		var count = 0
+		for (T pivot : coll) {
+			if (pivot == element) {
+				count++
+			}
+		}
+		return count
+	}
 }
