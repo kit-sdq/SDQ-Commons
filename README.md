@@ -8,7 +8,8 @@ The commons projects in this repository are developed and intended to be used by
 
 ## Project and Implementation Structure
 
-* Each project is specific for one domain, e.g. Java or EMF. 
+* Each project is specific for one domain, e.g. Java or EMF and should be named edu.kit.ipd.sdq.commons.util.$domainname.
+That is, the name of the root folder and plug-in for utility functionality for the domain "ABC" would be "edu.kit.ipd.sdq.commons.util.abc".
 * Each utility class within these projects is supposed to define utility functions for one domain class and shall be named just as the domain class followed by "Util".
 For example, the utilites class for the domain class "EObject" shall be called "EObjectUtil".
 * Each utility function within such a class should be static and accept an object of the domain class it is defined for as the first argument.
