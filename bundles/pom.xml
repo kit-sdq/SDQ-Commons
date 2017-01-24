@@ -17,7 +17,7 @@
 		<module>edu.kit.ipd.sdq.commons.util.emf</module>
 		<module>edu.kit.ipd.sdq.commons.util.java</module>
 		<module>edu.kit.ipd.sdq.commons.util.mdsdprofiles</module>
-		<module>edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm</module>
+		<module>edu.kit.ipd.sdq.commons.util.pcm</module>
 	</modules>
 
 </project>

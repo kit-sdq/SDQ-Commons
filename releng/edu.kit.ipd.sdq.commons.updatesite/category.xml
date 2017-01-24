@@ -9,7 +9,7 @@
    <feature url="features/edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature_1.0.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature" version="1.0.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature url="features/edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.feature_1.0.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.feature" version="1.0.0.qualifier">
+   <feature url="features/edu.kit.ipd.sdq.commons.util.pcm.feature_1.0.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.pcm.feature" version="1.0.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
    <category-def name="SDQ Commons" label="SDQ Commons">

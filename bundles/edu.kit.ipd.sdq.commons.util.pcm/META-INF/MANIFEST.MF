@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Utility methods for the PCM
-Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm
+Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.pcm
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -11,5 +11,5 @@ Require-Bundle: com.google.guava,
  org.eclipse.xtend.lib.macro,
  org.palladiosimulator.pcm,
  edu.kit.ipd.sdq.commons.util.java
-Export-Package: edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.core.composition
+Export-Package: edu.kit.ipd.sdq.commons.util.pcm.core.composition
 
