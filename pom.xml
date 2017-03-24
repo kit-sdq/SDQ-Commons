@@ -35,7 +35,7 @@
 		<repository>
 			<id>Palladio Nightly</id>
 			<layout>p2</layout>
-			<url>https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/</url>
+			<url>http://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/</url>
 		</repository>
 		<repository>
 			<id>EMF Profiles</id>
