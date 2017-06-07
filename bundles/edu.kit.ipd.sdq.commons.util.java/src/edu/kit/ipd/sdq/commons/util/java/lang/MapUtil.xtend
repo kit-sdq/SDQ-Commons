@@ -4,7 +4,6 @@ import java.util.Collection
 import java.util.Map
 import org.eclipse.xtext.xbase.lib.Functions.Function0
 import java.util.List
-import org.eclipse.xtext.xbase.lib.Functions.Function1
 import org.eclipse.xtext.xbase.lib.Functions.Function2
 import java.util.ArrayList
 
@@ -40,11 +39,13 @@ class MapUtil {
 	}
 	
 	def public static final <K,V,C extends Collection<V>> boolean containsAll(Map<K,C> map1, Map<K,C> map2) {
-		map2?.mapFixed[key,value|map1?.get(key)?.containsAll(value)].forall[it == true]
+		map2?.mapFixed[key,value|containsAll(map1, key, value)].forall[it == true]
 	}
 	
 	def public static final <K,V,C extends Collection<V>> boolean containsAll(Map<K,C> map, K key, C values) {
-		return map?.get(key)?.containsAll(values)
+		if (map == null) return false 
+		else if (map.get(key) == null) return false 
+		else return map.get(key).containsAll(values)
 	}
 	
 	public static final def <K,V,R> List<R> mapFixed(Map<K,V> map, Function2<? super K, ? super V, ? extends R> transformation) {
