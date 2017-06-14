@@ -10,9 +10,7 @@ Require-Bundle: com.google.guava,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
  org.palladiosimulator.pcm,
- edu.kit.ipd.sdq.commons.util.java,
- edu.kit.kastel.scbs.confidentialitymm,
- edu.kit.ipd.sdq.commons.util.mdsdprofiles
+ edu.kit.ipd.sdq.commons.util.java
 Export-Package: edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.core.entity,
  edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.core.composition,
  edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.repository
