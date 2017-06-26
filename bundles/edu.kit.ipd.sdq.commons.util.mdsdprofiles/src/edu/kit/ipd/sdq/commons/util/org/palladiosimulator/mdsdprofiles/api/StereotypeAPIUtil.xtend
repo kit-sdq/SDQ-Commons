@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject
 import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.EObjectUtil.getFeatureValues
 import static extension edu.kit.ipd.sdq.commons.util.java.util.ListUtil.mapFixed
 import static extension org.palladiosimulator.mdsdprofiles.api.StereotypeAPI.*
-
+import org.modelversioning.emfprofileapplication.StereotypeApplication
 
 /**
  * A utility class providing extension methods for stereotypable EObjects
@@ -19,8 +19,12 @@ class StereotypeAPIUtil {
 
 	def static <T> List<T> getTaggedValues(EObject eObject, String stereotypeName, String featureName, Class<T> tagType) {
 		val stereotypeApplications = eObject.getStereotypeApplications(stereotypeName)
-		val taggedValues = stereotypeApplications.mapFixed[it.getFeatureValues(featureName)].flatten().mapFixed[tagType.cast(it)]
+		val taggedValues = stereotypeApplications.getTaggedValues(featureName, tagType)
 		return taggedValues
+	}
+	
+	def static <T> List<T> getTaggedValues(Iterable<StereotypeApplication> applications, String featureName, Class<T> tagType) {
+		return applications.mapFixed[it.getFeatureValues(featureName)].flatten().mapFixed[tagType.cast(it)]
 	}
 	
 	def static <T> List<T> addTaggedValues(EObject eObject, String stereotypeName, String featureName, List<T> taggedValuesToAdd, Class<T> tagType) {
