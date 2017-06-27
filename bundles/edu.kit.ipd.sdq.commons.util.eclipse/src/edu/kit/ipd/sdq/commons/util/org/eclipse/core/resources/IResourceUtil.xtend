@@ -4,7 +4,7 @@ import org.eclipse.core.resources.IResource
 import org.eclipse.emf.common.util.URI
 
 /**
- * A utility class providing extension methods for EObjects
+ * A utility class providing extension methods for IResources
  * 
  */
 class IResourceUtil {
@@ -20,7 +20,11 @@ class IResourceUtil {
 	 *            an Eclipse resource
 	 * @return a platform resource URI for the resource
 	 */
-	public static def URI getEMFPlatformURI(IResource iResource) {
+	def static URI getEMFPlatformURI(IResource iResource) {
 		return URI.createPlatformResourceURI(iResource.getFullPath()?.toString(), true)
 	}
+	
+	def static String getAbsolutePathString(IResource resource) {
+        return resource?.getLocation()?.toOSString()
+    }
 }
