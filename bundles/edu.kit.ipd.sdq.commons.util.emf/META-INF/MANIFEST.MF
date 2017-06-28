@@ -17,5 +17,6 @@ Require-Bundle: com.google.guava,
 Export-Package: edu.kit.ipd.sdq.commons.util.org.eclipse.emf.common.util,
  edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore,
  edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change,
- edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change.impl
+ edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change.impl,
+ edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.resource
 

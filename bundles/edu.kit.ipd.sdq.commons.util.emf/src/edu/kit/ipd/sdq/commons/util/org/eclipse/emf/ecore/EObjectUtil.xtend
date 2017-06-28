@@ -81,7 +81,7 @@ class EObjectUtil {
      * @see org.eclipse.emf.ecore.EObject#eAllContents() EObject.eAllContents()
      */
     def static Iterable<EObject> getAllContents(EObject eObject) {
-        return eObject.eAllContents().toIterable()
+        return eObject?.eAllContents()?.toIterable()
     }
     
 	/**
@@ -92,7 +92,9 @@ class EObjectUtil {
 	 * @return a direct and indirect content iterating iterable
 	 *
 	 * @see org.eclipse.emf.ecore.Resource#eAllContents() Resource.eAllContents()
-	 */
+	 * @deprecated {@link edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.resource.ResourceUtil#getAllContentsIterable(Resource)}
+     */
+	@Deprecated
 	def static Iterable<EObject> getAllContents(Resource resource) {
 	    return resource.getAllContents().toIterable()
 	}
