@@ -16,6 +16,7 @@
 	<modules>
 		<module>edu.kit.ipd.sdq.commons.util.java.feature</module>
 		<module>edu.kit.ipd.sdq.commons.util.emf.feature</module>
+		<module>edu.kit.ipd.sdq.commons.util.eclipse.feature</module>
 		<module>edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature</module>
 		<module>edu.kit.ipd.sdq.commons.util.pcm.feature</module>
 	</modules>
