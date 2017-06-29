@@ -15,7 +15,7 @@ class ChangeDescriptionUtil {
 	
 	def static ChangeDescriptionImpl asImpl(ChangeDescription changeDescription) {
 		if (changeDescription instanceof ChangeDescriptionImpl) {
-			return changeDescription as ChangeDescriptionImpl
+			return changeDescription
 		} else {
 			throw new RuntimeException("The EMF change description " + changeDescription + " is not an instance of ChangeDescriptionImpl!")
 		}

@@ -36,7 +36,7 @@ class EObjectUtil {
 			return null
 		} else {
 			if (newValue instanceof List<?>) {
-				return newValue as List<?>
+				return newValue
 			} else {
 				throw new IllegalStateException("The value '" + newValue + "' for the multi-valued feature '" + feature + "' of the EObject '" + eObject + "' has to be a list!")
 			}
