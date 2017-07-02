@@ -19,7 +19,7 @@ class ListUtil {
 	 */
 	def static <T> T claimElementAt(List<T> list, int index) {
 		val element = list?.get(index)
-		if (element == null) {
+		if (element === null) {
 			throw new IllegalStateException("It was claimed that the list '" + list + "' contains an element at index '" + index + "'!")
 		} else {
 			return element

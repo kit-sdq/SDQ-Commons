@@ -20,6 +20,6 @@ class StringUtil {
 	}
 	
 	public static def boolean isEmpty(String string) {
-		return string == null || string.equals("");
+		return string === null || string.equals("");
 	}
 }

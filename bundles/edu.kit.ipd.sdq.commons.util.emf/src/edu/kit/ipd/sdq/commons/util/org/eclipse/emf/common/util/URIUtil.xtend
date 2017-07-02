@@ -37,9 +37,9 @@ class URIUtil {
 				resource = resourceSet.getResource(normalizedURI, true);
 			}
 
-			if (resource == null) {
+			if (resource === null) {
 				val oldResource = resourceSet.getResource(normalizedURI, false);
-				if (oldResource != null) {
+				if (oldResource !== null) {
 					oldResource.delete(null);
 				}
 				resource = resourceSet.createResource(normalizedURI);

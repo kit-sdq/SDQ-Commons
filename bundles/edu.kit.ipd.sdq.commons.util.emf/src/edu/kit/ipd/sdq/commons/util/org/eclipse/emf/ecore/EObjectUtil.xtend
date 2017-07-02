@@ -32,7 +32,7 @@ class EObjectUtil {
 	 */
 	def static List<?> getFeatureValues(EObject eObject, EStructuralFeature feature) {
 		val newValue = eObject?.eGet(feature)
-		if (newValue == null || !feature.many) {
+		if (newValue === null || !feature.many) {
 			return null
 		} else {
 			if (newValue instanceof List<?>) {
@@ -49,7 +49,7 @@ class EObjectUtil {
 	 */
 	def static Object getFeatureValue(EObject eObject, EStructuralFeature feature) {
 		val newValue = eObject?.eGet(feature)
-		if (newValue == null || feature.many) {
+		if (newValue === null || feature.many) {
 			return null
 		} else {
 			if (!(newValue instanceof List<?>)) {
@@ -62,9 +62,9 @@ class EObjectUtil {
 	
 	def static EList<?> getValueList(EObject eObject, EStructuralFeature feature) {
 		val value = eObject.eGet(feature)
-		if (feature.many && value != null) {
+		if (feature.many && value !== null) {
 			return value as EList<?>
-		} else if (value == null) {
+		} else if (value === null) {
 			return new BasicEList()
 		} else {
 			return new BasicEList(#[value])
