@@ -30,6 +30,12 @@
    <feature id="edu.kit.ipd.sdq.commons.util.eclipse.feature.source" version="1.1.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
+   <feature url="features/edu.kit.ipd.sdq.commons.util.xtend.feature_1.1.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.xtend.feature" version="1.1.0.qualifier">
+      <category name="SDQ Commons"/>
+   </feature>
+   <feature id="edu.kit.ipd.sdq.commons.util.xtend.feature.source" version="1.1.0.qualifier">
+      <category name="SDQ Commons"/>
+   </feature>
    <category-def name="SDQ Commons" label="SDQ Commons">
       <description>
          Commons projects containing utility functions for different domains
