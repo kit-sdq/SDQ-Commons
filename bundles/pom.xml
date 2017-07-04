@@ -19,6 +19,7 @@
 		<module>edu.kit.ipd.sdq.commons.util.java</module>
 		<module>edu.kit.ipd.sdq.commons.util.mdsdprofiles</module>
 		<module>edu.kit.ipd.sdq.commons.util.pcm</module>
+		<module>edu.kit.ipd.sdq.commons.util.xtend</module>
 	</modules>
 
 </project>
