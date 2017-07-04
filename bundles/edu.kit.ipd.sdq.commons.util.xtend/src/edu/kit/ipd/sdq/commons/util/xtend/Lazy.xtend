@@ -7,7 +7,6 @@ import org.eclipse.xtend.lib.macro.Active
 import org.eclipse.xtend.lib.macro.TransformationContext
 import org.eclipse.xtend.lib.macro.declaration.MutableFieldDeclaration
 import org.eclipse.xtend.lib.macro.declaration.Visibility
-import org.eclipse.xtend.lib.macro.expression.Expression
 
 /**
  * Lazily initializes a field. A field annotated with {@code @Lazy} will get a
