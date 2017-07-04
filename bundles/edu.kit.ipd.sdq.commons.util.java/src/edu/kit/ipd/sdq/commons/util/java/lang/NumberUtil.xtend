@@ -21,7 +21,7 @@ class NumberUtil {
 	def static Number sum(Iterable<? extends Number> coll) {
 		var Number sum = null
 		for (Number number : coll) {
-			if (sum == null) {
+			if (sum === null) {
 				sum = number
 			} else {
 // 				FIXME find out the partial order for the supported Number types, which are

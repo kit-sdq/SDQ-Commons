@@ -26,7 +26,7 @@ class MapUtil {
 	
 	def public static final <K,V,C extends Collection<V>> C addAll(Map<K,C> map, K key, C values, Function0<C> constructor) {
 		var mappedValueCollection = map.get(key)
-		if (mappedValueCollection == null) {
+		if (mappedValueCollection === null) {
 			mappedValueCollection = constructor.apply
 			map.put(key,mappedValueCollection)
 		}
@@ -43,8 +43,8 @@ class MapUtil {
 	}
 	
 	def public static final <K,V,C extends Collection<V>> boolean containsAll(Map<K,C> map, K key, C values) {
-		if (map == null) return false 
-		else if (map.get(key) == null) return false 
+		if (map === null) return false 
+		else if (map.get(key) === null) return false 
 		else return map.get(key).containsAll(values)
 	}
 	
