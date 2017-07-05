@@ -4,7 +4,7 @@ import java.util.HashSet
 import org.palladiosimulator.pcm.repository.OperationInterface
 
 /**
- * A utility class providing extension methods for roles
+ * A utility class providing extension methods for operation interfaces
  * 
  */
 class OperationInterfaceUtil {

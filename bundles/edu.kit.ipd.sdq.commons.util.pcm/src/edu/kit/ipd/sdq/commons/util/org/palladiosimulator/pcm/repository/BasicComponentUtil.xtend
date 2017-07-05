@@ -8,7 +8,7 @@ import static edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.core.entity
 import static extension edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.repository.OperationInterfaceUtil.*
 
 /**
- * A utility class providing extension methods for roles
+ * A utility class providing extension methods for basic components
  * 
  */
 class BasicComponentUtil {
