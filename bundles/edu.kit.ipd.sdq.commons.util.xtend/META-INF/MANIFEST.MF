@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Xtend Util
-Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.xtend
-Bundle-Version: 1.1.0.qualifier
-Bundle-Vendor: SDQ
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.xtend.lib
-Export-Package:  edu.kit.ipd.sdq.commons.util.xtend
