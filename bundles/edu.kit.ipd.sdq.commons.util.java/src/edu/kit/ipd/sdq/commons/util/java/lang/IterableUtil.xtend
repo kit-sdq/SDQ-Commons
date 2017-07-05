@@ -68,7 +68,7 @@ class IterableUtil {
 	 * 
 	 * @throws IllegaStateException if the given {@link Iterable} does not contain exactly one element
 	 */
-	def static final <T> T claimOne(Iterable<T> iterable) {
+	def static final <A extends Iterable<T>, T> T claimOne(A iterable) {
 		val iterator = iterable.iterator();
 		if (iterator.hasNext()) {
 			val one = iterator.next();
@@ -77,5 +77,22 @@ class IterableUtil {
 	        }
 		}
 		throw new IllegalStateException("It was claimed that the collection '" + iterable + "' contains exactly one element!");
+	}
+	
+	/**
+	 * Checks if the given {@link Iterable} is empty.
+	 * Otherwise, an exception is thrown.
+	 * 
+	 * @param iterable -
+	 *			the {@link Iterable}. May not be <code>null</code>.
+	 * @return the given {@link Iterable}.
+	 * 
+	 * @throws IllegaStateException if the given {@link Iterable} is empty
+	 */
+	def static final <A extends Iterable<?>> A claimNotEmpty(A iterable) {
+	    if (iterable.size() == 0) {
+	        throw new IllegalStateException("It was claimed that the collection '" + iterable + "' is not empty!");
+	    }
+	    return iterable;
 	}
 }
