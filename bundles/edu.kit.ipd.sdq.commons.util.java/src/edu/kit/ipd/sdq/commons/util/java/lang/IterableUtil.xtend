@@ -95,4 +95,25 @@ class IterableUtil {
 	    }
 	    return iterable;
 	}
+	
+	/**
+	 * Checks if the given {@link Iterable} contains at most one element and returns it.
+	 * If it contains more than 1 element, an exception is thrown.
+	 * 
+	 * @param iterable -
+	 *			the {@link Iterable}. May not be <code>null</code>.
+	 * @return the unique element of the given {@link Iterable} or <code>null</code> if it is empty.
+	 * 
+	 * @throws IllegaStateException if the given {@link Iterable} contains more than one element
+	 */
+	def static final <A extends Iterable<T>, T> T claimNotMany(A c) {
+	    val size = c.size();
+		if (size > 1) {
+	        throw new IllegalStateException("It was claimed that the collection '" + c + "' contains exactly one element!");
+	    } else if (size == 1) {
+	    	return c.iterator().next();
+	    } else {
+	    	return null;
+	    }
+	}
 }
