@@ -24,7 +24,7 @@ class ParameterUtil {
 	 * 
 	 * @throws IllegalArgumentException if the given {@link Parameter} is <code>null</code>.
 	 */
-	static def void setParameterName(Parameter parameter, String name) {
+	static def void setName(Parameter parameter, String name) {
 		if (parameter === null) {
 			throw new IllegalArgumentException("Parameter must not be null");
 		}
