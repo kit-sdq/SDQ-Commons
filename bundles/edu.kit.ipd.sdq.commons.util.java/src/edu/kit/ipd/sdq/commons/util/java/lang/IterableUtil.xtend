@@ -57,4 +57,25 @@ class IterableUtil {
 		}
 		return count
 	}
+	
+	/**
+	 * Checks if the given {@link Iterable} contains only one element and returns it.
+	 * Otherwise, an exception is thrown.
+	 * 
+	 * @param iterable -
+	 *			the {@link Iterable}. May not be <code>null</code>.
+	 * @return the only element in the given {@link Iterable}. Never <code>null</code>.
+	 * 
+	 * @throws IllegaStateException if the given {@link Iterable} does not contain exactly one element
+	 */
+	def static final <T> T claimOne(Iterable<T> iterable) {
+		val iterator = iterable.iterator();
+		if (iterator.hasNext()) {
+			val one = iterator.next();
+	        if (!iterator.hasNext()) {
+	        	return one;
+	        }
+		}
+		throw new IllegalStateException("It was claimed that the collection '" + iterable + "' contains exactly one element!");
+	}
 }
