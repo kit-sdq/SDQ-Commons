@@ -6,19 +6,22 @@
     </contributions>
     <contributions label="externals">
       <repositories location="http://download.eclipse.org/releases/neon/" mirrorArtifacts="false">
-        <features name="org.eclipse.emf.ecore.feature.group" versionRange="2.12.0" categories="//@customCategories[identifier='externals']"/>
-        <features name="org.eclipse.emf.ecore.edit.feature.group" versionRange="2.9.0" categories="//@customCategories[identifier='externals']"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0" categories="//@customCategories[identifier='externals']"/>
-        <features name="org.eclipse.emf.common.feature.group" versionRange="2.12.0" categories="//@customCategories[identifier='externals']"/>
-        <features name="org.eclipse.emf.transaction.feature.group" versionRange="1.10.0" categories="//@customCategories[identifier='externals']"/>
-        <features name="org.eclipse.platform.feature.group" versionRange="4.6.0" categories="//@customCategories[identifier='externals']"/>
+        <features name="org.eclipse.emf.ecore.feature.group" versionRange="2.12.0"/>
+        <features name="org.eclipse.emf.ecore.edit.feature.group" versionRange="2.9.0"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0"/>
+        <features name="org.eclipse.emf.common.feature.group" versionRange="2.12.0"/>
+        <features name="org.eclipse.emf.transaction.feature.group" versionRange="1.10.0"/>
+        <features name="org.eclipse.platform.feature.group" versionRange="4.6.0"/>
+        <features name="org.eclipse.xtext.xbase.feature.group" versionRange="2.10.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.10.0"/>
+        <features name="org.eclipse.xtext.ui.feature.group" versionRange="2.10.0"/>
       </repositories>
-      <repositories location="https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/" mirrorArtifacts="false">
-        <features name="org.palladiosimulator.mdsdprofiles.feature.feature.group" versionRange="1.0.1" categories="//@customCategories[identifier='externals']"/>
-        <features name="org.palladiosimulator.pcm.feature.feature.group" versionRange="4.0.1" categories="//@customCategories[identifier='externals']"/>
+      <repositories location="https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/">
+        <features name="org.palladiosimulator.mdsdprofiles.feature.feature.group" versionRange="1.0.1"/>
+        <features name="org.palladiosimulator.pcm.feature.feature.group" versionRange="4.0.1"/>
       </repositories>
-      <repositories location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles-updatesite/" mirrorArtifacts="false">
-        <features name="org.modelversioning.emfprofile.feature.feature.group" versionRange="1.0.0" categories="//@customCategories[identifier='externals']"/>
+      <repositories location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles-updatesite/">
+        <features name="org.modelversioning.emfprofile.feature.feature.group" versionRange="1.0.0"/>
       </repositories>
     </contributions>
   </validationSets>
@@ -28,5 +31,4 @@
   <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
-  <customCategories identifier="externals" label="External Dependencies" features="//@validationSets[label='main']/@contributions[label='externals']/@repositories.0/@features.0 //@validationSets[label='main']/@contributions[label='externals']/@repositories.0/@features.2 //@validationSets[label='main']/@contributions[label='externals']/@repositories.0/@features.1 //@validationSets[label='main']/@contributions[label='externals']/@repositories.0/@features.3 //@validationSets[label='main']/@contributions[label='externals']/@repositories.0/@features.4 //@validationSets[label='main']/@contributions[label='externals']/@repositories.1/@features.0 //@validationSets[label='main']/@contributions[label='externals']/@repositories.2/@features.0 //@validationSets[label='main']/@contributions[label='externals']/@repositories.1/@features.1 //@validationSets[label='main']/@contributions[label='externals']/@repositories.0/@features.5"/>
 </aggregator:Aggregation>
