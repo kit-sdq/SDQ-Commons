@@ -116,4 +116,21 @@ class IterableUtil {
 	    	return null;
 	    }
 	}
+	
+	/**
+	 * Filters elements according to their class and adapts the Iterable’s
+	 * type accordingly.
+	 * 
+	 * The resulting iterable's iterator does not support remove().
+	 * 
+	 * @param thiz
+	 * 		The source Iterable
+	 * @param clazz
+	 * 		The class
+	 * @return An Iterable containing exactly the elements from
+	 * {@code thiz} that are an instance of the provided {@code clazz}. 
+	 */
+	def static <A> Iterable<A> typeFilter(Iterable<? super A> thiz, Class<A> clazz) {
+		thiz.filter [clazz.isInstance(it)].map [clazz.cast(it)]
+	}
 }
