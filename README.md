@@ -2,6 +2,8 @@
 
 This repository contains commons projects providing utility functionality that is not project-specific.
 
+Install from [nightly update site](https://kit-sdq.github.io/updatesite/nightly/commons) (only for use via "Install Software" in Eclipse)
+
 ## Project Development
 
 The commons projects in this repository are developed and intended to be used by members of the Chair for Software Design and Quality (SDQ) at the Karlsruhe Institute of Technology (KIT): http://sdq.ipd.kit.edu/
