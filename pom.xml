@@ -21,7 +21,7 @@
 		<java.version>1.8</java.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<xtext.version>2.10.0</xtext.version>
+		<xtext.version>2.12.0</xtext.version>
 		<tycho.version>1.0.0</tycho.version>
 	</properties>
 
@@ -30,7 +30,7 @@
 		<repository>
 			<id>Eclipse</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/neon</url>
+			<url>http://download.eclipse.org/releases/oxygen</url>
 		</repository>
 		<repository>
 			<id>Palladio Nightly</id>

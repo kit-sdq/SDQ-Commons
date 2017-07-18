@@ -18,10 +18,12 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtend.sdk" version="2.10.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore" version="2.12.0" match="greaterOrEqual"/>
-      <import feature="edu.kit.ipd.sdq.commons.util.java.feature" version="1.0.0" match="greaterOrEqual"/>
-      <import feature="org.palladiosimulator.pcm.feature" version="4.0.1" match="greaterOrEqual"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.12.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.palladiosimulator.pcm"/>
+      <import plugin="edu.kit.ipd.sdq.commons.util.java"/>
    </requires>
 
    <plugin

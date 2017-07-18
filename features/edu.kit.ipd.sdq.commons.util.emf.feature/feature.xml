@@ -18,11 +18,15 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtend.sdk" version="2.10.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore" version="2.12.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.transaction" version="1.10.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.common" version="2.12.0" match="greaterOrEqual"/>
-      <import feature="edu.kit.ipd.sdq.commons.util.java.feature" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.12.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.change"/>
+      <import plugin="edu.kit.ipd.sdq.commons.util.java"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.core.runtime"/>
    </requires>
 
    <plugin

@@ -18,15 +18,20 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtend.sdk" version="2.10.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore" version="2.12.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore.edit" version="2.9.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.transaction" version="1.10.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.common" version="2.12.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.edit" version="2.12.0" match="greaterOrEqual"/>
-      <import feature="org.palladiosimulator.mdsdprofiles.feature" version="1.0.1" match="greaterOrEqual"/>
-      <import feature="org.palladiosimulator.pcm.feature" version="4.0.1" match="greaterOrEqual"/>
-      <import feature="org.modelversioning.emfprofile.feature" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.generator"/>
+      <import plugin="org.eclipse.emf.mwe2.launch"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="org.palladiosimulator.mdsdprofiles.api"/>
+      <import plugin="org.palladiosimulator.pcm"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="greaterOrEqual"/>
+      <import plugin="org.modelversioning.emfprofile" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.commons" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit" version="2.10.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common" version="2.10.0" match="greaterOrEqual"/>
+      <import plugin="edu.kit.ipd.sdq.commons.util.emf"/>
+      <import plugin="edu.kit.ipd.sdq.commons.util.java"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.12.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
