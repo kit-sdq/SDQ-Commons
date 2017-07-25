@@ -20,7 +20,7 @@
         <features name="org.palladiosimulator.mdsdprofiles.feature.feature.group" versionRange="1.0.1"/>
         <features name="org.palladiosimulator.pcm.feature.feature.group" versionRange="4.0.1"/>
       </repositories>
-      <repositories location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles-updatesite/">
+      <repositories location="https://sdqbuild.ipd.kit.edu/nexus/content/repositories/emf-profiles/">
         <features name="org.modelversioning.emfprofile.feature.feature.group" versionRange="1.0.0"/>
       </repositories>
     </contributions>
