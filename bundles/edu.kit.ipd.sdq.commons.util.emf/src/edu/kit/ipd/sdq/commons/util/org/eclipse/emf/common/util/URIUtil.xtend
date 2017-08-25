@@ -33,7 +33,7 @@ class URIUtil {
 				normalizedURI = resourceSet.getURIConverter().normalize(resourceURI)
 			}
 
-			if (existsResourceAtUri(normalizedURI)) {
+			if (resourceSet.URIConverter.exists(normalizedURI, null)) {
 				resource = resourceSet.getResource(normalizedURI, true);
 			}
 
@@ -69,6 +69,9 @@ class URIUtil {
 	 */
 	def static boolean existsResourceAtUri(URI uri) {
 		if (uri.isPlatform()) {
+			if (uri.isPlatformPlugin()) {
+				throw new UnsupportedOperationException();
+			}
 			return getIFileForEMFUri(uri).exists()
 		} else if (uri.isFile()) {
 			return new File(uri.toFileString()).exists()
@@ -77,6 +80,9 @@ class URIUtil {
 				"Checking if a resource at an URI exists is currently only implemented for file and platform URIs.");
 	}
 	
+	
+	
+		
 	/**
 	 * Returns an Eclipse file for the given EMF URI.
 	 *
@@ -87,6 +93,9 @@ class URIUtil {
 	def static IFile getIFileForEMFUri(URI uri) {
 		if (uri.isPlatform()) {
 			val path = getIPathForEMFUri(uri)
+			if (uri.isPlatformPlugin()) {
+				throw new UnsupportedOperationException();
+			}
 			return ResourcesPlugin.getWorkspace().getRoot().getFile(path)
 		}
 		throw new UnsupportedOperationException("Getting the IFile is currently only implemented for platform URIs.");
