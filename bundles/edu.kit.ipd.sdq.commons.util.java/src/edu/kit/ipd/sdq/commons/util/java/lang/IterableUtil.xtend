@@ -4,6 +4,9 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1
 import java.util.List
 import java.util.ArrayList
 import java.util.function.Function
+import java.util.Map
+import java.util.HashMap
+import java.util.Collection
 
 /**
  * A utility class providing extension methods for Iterables
@@ -139,5 +142,34 @@ class IterableUtil {
 	def static <A, B> Iterable<B> flatMap(Iterable<A> thiz,
 		Function<? super A, ? extends Iterable<? extends B>> mapper) {
 		thiz.map(mapper).flatten
+	}
+
+	/**
+	 * Returns a map whose values are the {@code iterable}’s values. The map’s
+	 * keys will be computed by invoking the supplied function {@code indexer}
+	 * on each value corresponding value. Each key should be unique throughout
+	 * the {@code iterable}. If it’s not, values override earlier values with
+	 * the same key 
+	 * 
+	 * @param iterable
+	 * 		the values to use when constructing the {@code Map}. May not
+	 * 		be {@code null}.
+	 * @param indexer
+	 * 		the function used to produce the key for each value. May not
+	 * 		be {@code null}.
+	 * @return a map mapping the result of evaluating the function 
+	 * 		{@code indexer} on each value in the input iterable to that 
+	 * 		value.
+	 */
+	def static <A, B> Map<A, B> indexedBy(Iterable<B> iterable, Function<B, A> indexer) {
+		val result = if (iterable instanceof Collection<?>) { 
+				new HashMap(iterable.size)
+			} else {
+				new HashMap
+			}
+		for (b : iterable) {
+			result.put(indexer.apply(b), b)
+		}
+		return result
 	}
 }
