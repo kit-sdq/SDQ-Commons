@@ -16,7 +16,7 @@
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.12.0"/>
         <features name="org.eclipse.xtext.ui.feature.group" versionRange="2.12.0"/>
       </repositories>
-      <repositories location="https://sdqbuild.ipd.kit.edu/nexus/content/repositories/palladiosimulator-nightly/">
+      <repositories location="https://sdqbuild.ipd.kit.edu/nexus/content/repositories/palladiosimulator-release/">
         <features name="org.palladiosimulator.mdsdprofiles.feature.feature.group" versionRange="1.0.1"/>
         <features name="org.palladiosimulator.pcm.feature.feature.group" versionRange="4.0.1"/>
       </repositories>

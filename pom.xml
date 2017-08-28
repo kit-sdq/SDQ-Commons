@@ -33,9 +33,9 @@
 			<url>http://sdqbuild.ipd.kit.edu/nexus/content/groups/eclipse-oxygen-complete</url>
 		</repository>
 		<repository>
-			<id>Palladio Nightly</id>
+			<id>Palladio</id>
 			<layout>p2</layout>
-			<url>https://sdqbuild.ipd.kit.edu/nexus/content/repositories/palladiosimulator-nightly/</url>
+			<url>https://sdqbuild.ipd.kit.edu/nexus/content/repositories/palladiosimulator-release/</url>
 		</repository>
 		<repository>
 			<id>EMF Profiles</id>
