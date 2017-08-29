@@ -4,6 +4,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1
 import java.util.List
 import java.util.ArrayList
 import java.util.function.Function
+import java.util.function.Predicate
 import java.util.Map
 import java.util.HashMap
 import java.util.Collection
@@ -142,6 +143,19 @@ class IterableUtil {
 	def static <A, B> Iterable<B> flatMap(Iterable<A> thiz,
 		Function<? super A, ? extends Iterable<? extends B>> mapper) {
 		thiz.map(mapper).flatten
+	}
+
+	/**
+	 * Queries whether the given iterable contains any element fulfilling the
+	 * provided predicate.
+	 */
+	def static <T> containsAny(Iterable<T> iterable, Predicate<? super T> predicate) {
+		for (T t : iterable) {
+			if (predicate.test(t)) {
+				return true
+			}
+		}
+		return false
 	}
 
 	/**
