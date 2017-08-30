@@ -17,5 +17,12 @@ import org.eclipse.xtend.lib.annotations.Data
 class Triple<A,B,C> extends Pair<A,B> {
 	C third
 	
+    /**
+     * @return the element at zero-based index 2, which is also available via the getter {@link C getThird()}
+     */
+    def C get2() {
+    	return third
+    }
+	
 	override toString() '''Triple(«this.first»,«this.second»,«this.third»)'''
 }

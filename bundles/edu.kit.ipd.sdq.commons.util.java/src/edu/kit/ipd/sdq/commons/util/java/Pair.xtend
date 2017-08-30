@@ -12,9 +12,15 @@ import org.eclipse.xtend.lib.annotations.Data
  * @author Max E. Kramer
  */
 @Data
-class Pair<A,B> {
-    A first
+class Pair<A,B> extends Monuple<A> {
     B second	
+    
+    /**
+     * @return the element at zero-based index 1, which is also available via the getter {@link B getSecond()}
+     */
+    def B get1() {
+    	return second
+    }
     
     override toString() '''Pair(«this.first»,«this.second»)'''
 }
