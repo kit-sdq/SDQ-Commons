@@ -102,4 +102,18 @@ class IProjectUtil {
 		return true;
 	}
 
+	/**
+	 * Creates a Java project with the given name in the current workspace, adding the Java nature
+	 * and a "src" folder to the project and registering the Java standard library.
+	 * If the given project already exists, an {@link IllegalStateException} is thrown.
+	 * 
+	 * @param projectName - the name of the project to create
+	 * @returns whether the project was successfully created or not
+	 * @throws IllegalStateException if the project already exists
+	 */
+	def static boolean createJavaProject(String projectName) {
+		val project = getWorkspaceProject(projectName);
+		return createJavaProject(project);
+	}
+
 }
