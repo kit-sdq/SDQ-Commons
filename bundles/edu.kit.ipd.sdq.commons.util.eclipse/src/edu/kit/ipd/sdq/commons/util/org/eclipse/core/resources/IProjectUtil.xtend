@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.resources.IContainer
+import org.eclipse.core.resources.ResourcesPlugin
 
 /**
  * A utility class providing extension methods for IProjects
@@ -38,4 +39,13 @@ class IProjectUtil {
 		return folder;
 	}
 	
+	/**
+	 * Returns the project with the given name in the current Eclipse workspace.
+	 * @param projectName
+	 * 		- the name of the project to retrieve 
+	 * @returns the project with the given name in the workspace
+	 */
+	def static IProject getWorkspaceProject(String projectName) {
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+	}
 }
