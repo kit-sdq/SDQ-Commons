@@ -5,10 +5,10 @@
       <repositories location="../edu.kit.ipd.sdq.commons.updatesite/target/repository"/>
     </contributions>
     <contributions label="externals">
-      <repositories location="http://sdqbuild.ipd.kit.edu/nexus/content/groups/eclipse-oxygen-complete" mirrorArtifacts="false">
+      <repositories location="http://download.eclipse.org/releases/oxygen/" mirrorArtifacts="false">
         <features name="org.eclipse.emf.ecore.feature.group" versionRange="2.12.0"/>
         <features name="org.eclipse.emf.ecore.edit.feature.group" versionRange="2.9.0"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.12.0"/>
         <features name="org.eclipse.emf.common.feature.group" versionRange="2.12.0"/>
         <features name="org.eclipse.emf.transaction.feature.group" versionRange="1.10.0"/>
         <features name="org.eclipse.platform.feature.group" versionRange="4.6.0"/>
@@ -16,11 +16,11 @@
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.12.0"/>
         <features name="org.eclipse.xtext.ui.feature.group" versionRange="2.12.0"/>
       </repositories>
-      <repositories location="https://sdqbuild.ipd.kit.edu/nexus/content/repositories/palladiosimulator-release/">
+      <repositories location="https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/releases/latest/">
         <features name="org.palladiosimulator.mdsdprofiles.feature.feature.group" versionRange="1.0.1"/>
         <features name="org.palladiosimulator.pcm.feature.feature.group" versionRange="4.0.1"/>
       </repositories>
-      <repositories location="https://sdqbuild.ipd.kit.edu/nexus/content/repositories/emf-profiles/">
+      <repositories location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/releases/latest/">
         <features name="org.modelversioning.emfprofile.feature.feature.group" versionRange="1.0.0"/>
       </repositories>
     </contributions>
