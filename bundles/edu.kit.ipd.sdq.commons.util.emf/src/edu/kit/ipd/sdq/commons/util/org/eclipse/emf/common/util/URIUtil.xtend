@@ -61,10 +61,10 @@ class URIUtil {
 	}
 	
 	/**
-	 * Return whether a resource exists at the specified {@link URI}.
+	 * Return whether a resource exists at the specified {@link URI}. The given {@link URI} must be either a file or a platform URI.
 	 * 
 	 * @param uri
-	 *            an EMF URI
+	 *            an EMF URI of type file or platform
 	 * @return true if a resource exists at the {@link URI}, false otherwise
 	 */
 	def static boolean existsResourceAtUri(URI uri) {
@@ -80,14 +80,11 @@ class URIUtil {
 				"Checking if a resource at an URI exists is currently only implemented for file and platform URIs.");
 	}
 	
-	
-	
-		
 	/**
-	 * Returns an Eclipse file for the given EMF URI.
+	 * Returns an Eclipse file for the given EMF URI. The given {@link URI} must be a platform URI.
 	 *
 	 * @param uri
-	 *            an EMF URI
+	 *            an EMF URI of type platform
 	 * @return an Eclipse file for the given URI
 	 */
 	def static IFile getIFileForEMFUri(URI uri) {
@@ -102,10 +99,10 @@ class URIUtil {
 	}
 	
 	/**
-	 * Creates and returns a new Eclipse path for the given EMF URI.
+	 * Creates and returns a new Eclipse path for the given EMF URI. The given {@link URI} must be either a file or a platform URI.
 	 *
 	 * @param uri
-	 *            an EMF URI
+	 *            an EMF URI of type file or platform
 	 * @return a new Eclipse path for the given URI
 	 */
 	def static IPath getIPathForEMFUri(URI uri) {
@@ -115,5 +112,16 @@ class URIUtil {
 			return new Path(uri.toFileString())
 		}
 		throw new UnsupportedOperationException("Getting the path is currently only implemented for file and platform URIs.");
+	}
+	
+	/**
+	 * Returns whether the given {@link URI} is a pathmap URI or not.
+	 * 
+	 * @param uri
+	 * 			an EMF URI
+	 * @return <code>true</code> if the given {@link  URI} is a pathmap URI, <code>false</code> otherwise
+	 */
+	def static boolean isPathmap(URI uri) {
+		return uri.toString.startsWith("pathmap");
 	}
 }
