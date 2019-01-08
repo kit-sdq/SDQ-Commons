@@ -123,29 +123,6 @@ class IterableUtil {
 	}
 	
 	/**
-	 * Analogon to {@link java.util.stream.Stream#flatMap}.
-	 * 
-	 * Returns an Iterable consisting of the results of replacing each
-	 * element of {@code thiz} Iterable with the contents of a mapped
-	 * Iterable produced by applying the provided Iterable function to each
-	 * element.  
-	 * 
-	 * This operation is lazy, meaning that it only produces new mapped
-	 * Iterables when requested. The returned iterable's iterator supports
-	 * remove() when the corresponding input iterators supports it. 
-	 * 
-	 * @param thiz The source Iterable.
-	 * @param mapper The mapping function, producing an Iterable for each 
-	 * element of {@code thiz}. It must never return {@code null}.
-	 * @return The Iterable containing all elements from all mapped
-	 *  Iterables. 
-	 */
-	def static <A, B> Iterable<B> flatMap(Iterable<A> thiz,
-		Function<? super A, ? extends Iterable<? extends B>> mapper) {
-		thiz.map(mapper).flatten
-	}
-
-	/**
 	 * Queries whether the given iterable contains any element fulfilling the
 	 * provided predicate.
 	 */
