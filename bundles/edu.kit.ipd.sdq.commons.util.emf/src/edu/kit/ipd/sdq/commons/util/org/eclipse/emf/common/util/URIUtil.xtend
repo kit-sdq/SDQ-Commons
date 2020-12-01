@@ -11,16 +11,13 @@ import java.io.File
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for EObjects
- * 
  */
+@Utility
 class URIUtil {
-	 /** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
 	def static Resource loadResourceAtURI(URI resourceURI, ResourceSet resourceSet) {
 		return loadResourceAtURI(resourceURI, resourceSet, Collections.emptyMap())
 	}
@@ -59,7 +56,7 @@ class URIUtil {
 		}
 		return resource;
 	}
-	
+
 	/**
 	 * Return whether a resource exists at the specified {@link URI}. The given {@link URI} must be either a file or a platform URI.
 	 * 
@@ -77,12 +74,12 @@ class URIUtil {
 			return new File(uri.toFileString()).exists()
 		}
 		throw new UnsupportedOperationException(
-				"Checking if a resource at an URI exists is currently only implemented for file and platform URIs.");
+			"Checking if a resource at an URI exists is currently only implemented for file and platform URIs.");
 	}
-	
+
 	/**
 	 * Returns an Eclipse file for the given EMF URI. The given {@link URI} must be a platform URI.
-	 *
+	 * 
 	 * @param uri
 	 *            an EMF URI of type platform
 	 * @return an Eclipse file for the given URI
@@ -97,10 +94,10 @@ class URIUtil {
 		}
 		throw new UnsupportedOperationException("Getting the IFile is currently only implemented for platform URIs.");
 	}
-	
+
 	/**
 	 * Creates and returns a new Eclipse path for the given EMF URI. The given {@link URI} must be either a file or a platform URI.
-	 *
+	 * 
 	 * @param uri
 	 *            an EMF URI of type file or platform
 	 * @return a new Eclipse path for the given URI
@@ -111,9 +108,10 @@ class URIUtil {
 		} else if (uri.isFile()) {
 			return new Path(uri.toFileString())
 		}
-		throw new UnsupportedOperationException("Getting the path is currently only implemented for file and platform URIs.");
+		throw new UnsupportedOperationException(
+			"Getting the path is currently only implemented for file and platform URIs.");
 	}
-	
+
 	/**
 	 * Returns whether the given {@link URI} is a pathmap URI or not.
 	 * 

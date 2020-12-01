@@ -1,14 +1,12 @@
 package edu.kit.ipd.sdq.commons.util.java.lang
 
+import edu.kit.ipd.sdq.activextendannotations.Utility
+
 /**
  * A utility class providing extension methods for Objects
- * 
  */
+@Utility
 class ObjectUtil {
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	    
     def static <T> T invokeDeclaredMethodWithoutParameters(Object object, String methodName, Class<T> returnType) {
     	val classWithMethod = object.getClass()
     	var T castedResult

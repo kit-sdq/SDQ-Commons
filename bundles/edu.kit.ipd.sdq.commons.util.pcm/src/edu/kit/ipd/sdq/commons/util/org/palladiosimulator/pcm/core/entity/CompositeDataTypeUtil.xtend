@@ -6,16 +6,13 @@ import org.palladiosimulator.pcm.repository.CompositeDataType
 import org.palladiosimulator.pcm.repository.InnerDeclaration
 import org.palladiosimulator.pcm.repository.PrimitiveDataType
 import org.palladiosimulator.pcm.repository.PrimitiveTypeEnum
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for CompositeDataTypes
  */
+@Utility
 class CompositeDataTypeUtil {
-	
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
 	/**
 	 * Returns a list of all inner declarations of the given data type that are not primitive.
 	 * That includes inner declarations with type String as it is a reference type.

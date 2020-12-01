@@ -5,16 +5,13 @@ import org.palladiosimulator.pcm.repository.CollectionDataType
 import org.palladiosimulator.pcm.repository.CompositeDataType
 import org.palladiosimulator.pcm.repository.DataType
 import org.palladiosimulator.pcm.repository.PrimitiveDataType
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for CollectionDataTypes
  */
+@Utility
 class CollectionDataTypeUtil {
-	
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
 	static def Iterable<DataType> getInnerTypes(Iterable<CollectionDataType> types) {
 		val innerTypes = new ArrayList<DataType>
 		for (type : types) {

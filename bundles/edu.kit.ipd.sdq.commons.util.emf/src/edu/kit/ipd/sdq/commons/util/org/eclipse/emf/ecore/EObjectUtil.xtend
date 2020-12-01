@@ -8,16 +8,13 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EReference
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for EObjects
- * 
  */
+@Utility
 class EObjectUtil {
-	 /** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
 	/**
 	 * Returns the list of values for the feature with the given name of the given eObject if it is multi-valued and <code>null</code> otherwise.
 	 */
@@ -107,7 +104,7 @@ class EObjectUtil {
 	 * 
 	 * @return the {@link EAttribute} of the objects {@link EClass} with the given name 
 	 */
-	def public static EAttribute getAttributeByName(EObject eObject, String attributeName) {
+	def static EAttribute getAttributeByName(EObject eObject, String attributeName) {
 		return eObject.eClass.getEAllAttributes.filter[attribute|attribute.name.equals(attributeName)].iterator.next
 	}
 
@@ -119,7 +116,7 @@ class EObjectUtil {
 	 * 
 	 * @return the {@link EReference} of the objects {@link EClass} with the given name 
 	 */
-	def public static EReference getReferenceByName(EObject eObject, String referenceName) {
+	def static EReference getReferenceByName(EObject eObject, String referenceName) {
 		return eObject.eClass.getEAllReferences.filter[reference|reference.name.equals(referenceName)].iterator.next
 	}
 }

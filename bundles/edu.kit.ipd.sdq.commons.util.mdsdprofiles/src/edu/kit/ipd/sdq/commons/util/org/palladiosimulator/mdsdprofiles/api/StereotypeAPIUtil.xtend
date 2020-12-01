@@ -7,6 +7,7 @@ import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.EObje
 import static extension edu.kit.ipd.sdq.commons.util.java.util.ListUtil.mapFixed
 import static extension org.palladiosimulator.mdsdprofiles.api.StereotypeAPI.*
 import org.modelversioning.emfprofileapplication.StereotypeApplication
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for stereotypable EObjects.<br/><br/>
@@ -25,13 +26,9 @@ import org.modelversioning.emfprofileapplication.StereotypeApplication
  * Consumers of this API do not need to know about the internal realization
  * using {@link org.modelversioning.emfprofileapplication.StereotypeApplication StereotypeApplication}
  * and {@link org.modelversioning.emfprofile.Stereotype Stereotype}.
- * 
  */
+@Utility
 class StereotypeAPIUtil {
-	 /** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-
 	/**
 	 * Returns all values that are currently tagged to the given {@link eObject} via 
 	 * applications of stereotypes that have the given {@link stereotypeName} using a feature

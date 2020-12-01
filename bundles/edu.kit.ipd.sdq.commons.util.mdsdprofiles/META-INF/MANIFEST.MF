@@ -2,8 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Mdsdprofiles
 Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.mdsdprofiles
+Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.mdsdprofiles
 Bundle-Version: 1.6.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.xtext.generator,
  org.eclipse.emf.mwe2.launch,
  org.eclipse.xtext.builder,
@@ -16,5 +17,6 @@ Require-Bundle: org.eclipse.xtext.generator,
  org.eclipse.emf.edit;bundle-version="2.10.1",
  org.eclipse.emf.common;bundle-version="2.10.0",
  edu.kit.ipd.sdq.commons.util.emf,
- edu.kit.ipd.sdq.commons.util.java
+ edu.kit.ipd.sdq.commons.util.java,
+ edu.kit.ipd.sdq.activextendannotations
 Export-Package: edu.kit.ipd.sdq.commons.util.org.palladiosimulator.mdsdprofiles.api

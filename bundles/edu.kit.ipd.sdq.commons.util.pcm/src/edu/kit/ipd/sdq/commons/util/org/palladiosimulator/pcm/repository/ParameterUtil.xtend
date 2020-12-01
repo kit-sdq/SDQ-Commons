@@ -2,16 +2,13 @@ package edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.repository
 
 import org.palladiosimulator.pcm.repository.Parameter
 import static extension edu.kit.ipd.sdq.commons.util.java.lang.IterableUtil.*
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for parameters
- * 
  */
+@Utility
 class ParameterUtil {
-	
-	/** Utility classes should not have a public or default constructor. */
-	private new() {}	
-	
 	/**
 	 * Sets the parameter name of the given {@link Parameter}.
 	 * In addition to the <code>parameterName</code> of the {@link Parameter}, it
