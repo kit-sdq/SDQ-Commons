@@ -2,16 +2,14 @@ package edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources
 
 import org.eclipse.core.resources.IResource
 import org.eclipse.emf.common.util.URI
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for IResources
  * 
  */
+@Utility
 class IResourceUtil {
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
 	/**
 	 * Creates and returns an EMF platform resource URI for the given Eclipse
 	 * resource.
