@@ -48,6 +48,11 @@
 			<layout>p2</layout>
 			<url>https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/releases/latest/</url>
 		</repository>
+		<repository>
+			<id>XAnnotations</id>
+			<layout>p2</layout>
+			<url>https://kit-sdq.github.io/updatesite/release/xannotations</url>
+		</repository>
 	</repositories>
 
 	<build>
