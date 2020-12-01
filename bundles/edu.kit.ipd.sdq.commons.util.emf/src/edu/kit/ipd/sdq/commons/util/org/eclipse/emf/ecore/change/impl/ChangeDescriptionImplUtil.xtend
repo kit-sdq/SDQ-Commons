@@ -10,17 +10,13 @@ import org.eclipse.emf.ecore.resource.Resource
 
 import static extension edu.kit.ipd.sdq.commons.util.java.lang.ObjectUtil.*
 import org.eclipse.emf.ecore.change.ListChange
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods to hide details of backward to forward change description conversion
- *
  */
+@Utility
 class ChangeDescriptionImplUtil {
-	
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
 	/**
 	 * Returns a map from objects to their container and the containment reference used for it
 	 */

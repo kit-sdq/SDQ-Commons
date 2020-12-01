@@ -9,25 +9,22 @@ import org.palladiosimulator.pcm.repository.OperationProvidedRole
 import org.palladiosimulator.pcm.repository.OperationRequiredRole
 import org.palladiosimulator.pcm.repository.Role
 import static extension edu.kit.ipd.sdq.commons.util.org.palladiosimulator.pcm.repository.RoleUtil.*
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for connectors
- * 
  */
+@Utility
 class ConnectorUtil {
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
-	public static def OperationProvidedRole getOperationProvidedRole(Connector connector) {
+	static def OperationProvidedRole getOperationProvidedRole(Connector connector) {
 		return getOperationRole(connector, true) as OperationProvidedRole
 	}
 	
-	public static def OperationRequiredRole getOperationRequiredRole(Connector connector) {
+	static def OperationRequiredRole getOperationRequiredRole(Connector connector) {
 		return getOperationRole(connector, false) as OperationRequiredRole
 	}
 	
-	public static def Role getOperationRole(Connector connector, boolean providedNotRequired) {
+	static def Role getOperationRole(Connector connector, boolean providedNotRequired) {
 		val connectedRole = switch connector {
 			AssemblyConnector : if (providedNotRequired) connector?.providedRole_AssemblyConnector else connector?.requiredRole_AssemblyConnector
 			ProvidedDelegationConnector : if (providedNotRequired) connector?.innerProvidedRole_ProvidedDelegationConnector else throw new RuntimeException("Cannot get required role for ProvidedDelegationConnector '" + connector + "'!")
@@ -36,7 +33,7 @@ class ConnectorUtil {
 		return connectedRole
 	}
 	
-	public static def OperationInterface getOperationInterface(Connector connector, boolean providedNotRequired) {
+	static def OperationInterface getOperationInterface(Connector connector, boolean providedNotRequired) {
 		val connectedRole = getOperationRole(connector, providedNotRequired)
 		return getOperationInterface(connectedRole, providedNotRequired)
 	}			

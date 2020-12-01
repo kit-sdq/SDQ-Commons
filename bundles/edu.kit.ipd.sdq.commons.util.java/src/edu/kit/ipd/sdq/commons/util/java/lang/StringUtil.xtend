@@ -1,17 +1,19 @@
 package edu.kit.ipd.sdq.commons.util.java.lang
 
 import java.util.Collection
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
+@Utility
 class StringUtil {
-	public static def String join(Collection<String> strings, String separator) {
+	static def String join(Collection<String> strings, String separator) {
 		return IterableExtensions.join(strings, separator);
 	}
 	
-	public static def String join(String[] strings, String separator) {
+	static def String join(String[] strings, String separator) {
 		return strings.toList.join(separator);
 	}
 	
-	public static def String repeat(String string, int times) {
+	static def String repeat(String string, int times) {
 		val strBuilder = new StringBuilder();
 		for (var i = 0; i < times; i++) {
 			strBuilder.append(string);
@@ -19,7 +21,7 @@ class StringUtil {
 		return strBuilder.toString
 	}
 	
-	public static def boolean isEmpty(String string) {
+	static def boolean isEmpty(String string) {
 		return string === null || string.equals("");
 	}
 }

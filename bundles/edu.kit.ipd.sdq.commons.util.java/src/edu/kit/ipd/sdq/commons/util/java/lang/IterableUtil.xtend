@@ -8,17 +8,14 @@ import java.util.function.Predicate
 import java.util.Map
 import java.util.HashMap
 import java.util.Collection
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for Iterables
- * 
  */
+@Utility
 class IterableUtil {
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
-	public static final def <T, R> List<R> mapFixed(Iterable<T> original, Function1<? super T, ? extends R> transformation) {
+	static final def <T, R> List<R> mapFixed(Iterable<T> original, Function1<? super T, ? extends R> transformation) {
 		val List<R> list = new ArrayList()
 		for (T o : original) {
 			list.add(transformation.apply(o))
@@ -42,7 +39,7 @@ class IterableUtil {
 	 *
 	 * @see org.eclipse.xtext.xbase.lib.IterableExtensions#join(Iterable, CharSequence, CharSequence, CharSequence, Functions.Function1)
 	 */
-	public static final def String join(Iterable<? extends CharSequence> iterable, CharSequence before, CharSequence separator, CharSequence after) '''«
+	static final def String join(Iterable<? extends CharSequence> iterable, CharSequence before, CharSequence separator, CharSequence after) '''«
 	FOR cs : iterable
 		BEFORE before
 		SEPARATOR separator

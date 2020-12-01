@@ -3,17 +3,13 @@ package edu.kit.ipd.sdq.commons.util.java.util
 import java.util.List
 import org.eclipse.xtext.xbase.lib.Functions.Function1
 import java.util.ArrayList
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for Lists
- * 
  */
+@Utility
 class ListUtil {
-	
-	 /** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-	
 	/**
 	 * Returns the element at the given index and throws an {@link java.lang.IllegalStateException} if it is not existing.
 	 */
