@@ -4,19 +4,24 @@ import org.eclipse.core.resources.IFolder
 import org.eclipse.core.resources.IProject
 import java.util.regex.Pattern
 import java.io.File
-import org.eclipse.core.runtime.Path
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.resources.IContainer
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.jdt.launching.JavaRuntime
+import static com.google.common.base.Preconditions.checkState
+import org.eclipse.core.internal.resources.ProjectDescription
+import java.nio.file.Path
 
 /**
  * A utility class providing extension methods for IProjects
  * 
  */
 class IProjectUtil {
+	public static val JAVA_SOURCE_FOLDER = Path.of('src')
+	public static val JAVA_BIN_FOLDER = Path.of('bin')
+	
 	/** Utility classes should not have a public or default constructor. */
 	private new() {
 	}
@@ -27,18 +32,18 @@ class IProjectUtil {
 		var IContainer currentContainer = project
 		var IFolder folder = null
 		for (folderNamePart : folderNames) {
-			folder = currentContainer.getFolder(new Path(folderNamePart))
+			folder = currentContainer.getFolder(new org.eclipse.core.runtime.Path(folderNamePart))
 			if (!folder.exists()) {
 				try {
 					folder.create(true, true, new NullProgressMonitor())
 				} catch (CoreException e) {
 					// soften
-					throw new RuntimeException(e);
+					throw new RuntimeException(e)
 				}
 			}
-			currentContainer = folder;
+			currentContainer = folder
 		}
-		return folder;
+		return folder
 	}
 
 	/**
@@ -48,7 +53,58 @@ class IProjectUtil {
 	 * @returns the project with the given name in the workspace
 	 */
 	def static IProject getWorkspaceProject(String projectName) {
-		return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName)
+	}
+
+	def static createProjectAt(String projectName, Path projectLocation) {
+		getWorkspaceProject(projectName) => [
+			checkState(!exists, '''The project «projectName» already exists!''')
+			create(new ProjectDescription => [
+				name = projectName
+				location = new org.eclipse.core.runtime.Path(projectLocation.toString)
+			], null)
+		]
+	}
+
+	/**
+	 * Configures the given {@link IProject} to be a java project, i.e. adds the Java nature
+	 * and a {@link #JAVA_SOURCE_FOLDER} to the project and registers the Java standard library.
+	 * <br>
+	 * To create the expected {@link IProject}, {@link #getWorkspaceProject IProjectUtil.getWorkspaceProject} can be used.
+	 * 
+	 * @param project - the {@link IProject} to initialize as a Java project
+	 * @throws IllegalStateException if the project already exists
+	 * @throws CoreException if configuring the project fails
+	 */
+	def static configureAsJavaProject(IProject project) {
+		// copied from:
+		// https://sdqweb.ipd.kit.edu/wiki/JDT_Tutorial:_Creating_Eclipse_Java_Projects_Programmatically
+		project.open(new NullProgressMonitor())
+		val description = project.getDescription()
+		description.setNatureIds(#{JavaCore.NATURE_ID})
+		project.setDescription(description, null)
+		val javaProject = JavaCore.create(project)
+		val binFolder = project.getFolder(JAVA_BIN_FOLDER.toString())
+		binFolder.create(false, true, null)
+		javaProject.setOutputLocation(binFolder.getFullPath(), null)
+		val entries = newArrayList()
+		val vmInstall = JavaRuntime.getDefaultVMInstall()
+		if (null !== vmInstall) {
+			val locations = JavaRuntime.getLibraryLocations(vmInstall)
+			for (element : locations) {
+				entries.add(JavaCore.newLibraryEntry(element.getSystemLibraryPath(), null, null))
+			}
+		}
+		// Add libs to project class path
+		javaProject.setRawClasspath(entries.toArray(newArrayOfSize(entries.size())), null)
+		val sourceFolder = project.getFolder(JAVA_SOURCE_FOLDER.toString())
+		sourceFolder.create(false, true, null)
+		val root = javaProject.getPackageFragmentRoot(sourceFolder)
+		val oldEntries = javaProject.getRawClasspath()
+		val newEntries = newArrayOfSize(oldEntries.length + 1)
+		java.lang.System.arraycopy(oldEntries, 0, newEntries, 0, oldEntries.length)
+		newEntries.set(oldEntries.length, JavaCore.newSourceEntry(root.getPath()))
+		javaProject.setRawClasspath(newEntries, null)
 	}
 
 	/**
@@ -63,43 +119,14 @@ class IProjectUtil {
 	 * @throws IllegalStateException if the project already exists
 	 */
 	def static boolean createJavaProject(IProject project) {
-		if (project.exists) {
-			throw new IllegalStateException("Project " + project.name + " already exists");
-		}
-		// copied from:
-		// https://sdqweb.ipd.kit.edu/wiki/JDT_Tutorial:_Creating_Eclipse_Java_Projects_Programmatically
+		checkState(!project.exists, '''The project «project.name» already exists!''')
 		try {
-			project.create(new NullProgressMonitor());
-			project.open(new NullProgressMonitor());
-			val description = project.getDescription();
-			description.setNatureIds(#{JavaCore.NATURE_ID});
-			project.setDescription(description, null);
-			val javaProject = JavaCore.create(project);
-			val binFolder = project.getFolder("bin");
-			binFolder.create(false, true, null);
-			javaProject.setOutputLocation(binFolder.getFullPath(), null);
-			val entries = newArrayList();
-			val vmInstall = JavaRuntime.getDefaultVMInstall();
-			if (null !== vmInstall) {
-				val locations = JavaRuntime.getLibraryLocations(vmInstall);
-				for (element : locations) {
-					entries.add(JavaCore.newLibraryEntry(element.getSystemLibraryPath(), null, null));
-				}
-			}
-			// Add libs to project class path
-			javaProject.setRawClasspath(entries.toArray(newArrayOfSize(entries.size())), null);
-			val sourceFolder = project.getFolder("src");
-			sourceFolder.create(false, true, null);
-			val root = javaProject.getPackageFragmentRoot(sourceFolder);
-			val oldEntries = javaProject.getRawClasspath();
-			val newEntries = newArrayOfSize(oldEntries.length + 1);
-			java.lang.System.arraycopy(oldEntries, 0, newEntries, 0, oldEntries.length);
-			newEntries.set(oldEntries.length, JavaCore.newSourceEntry(root.getPath()));
-			javaProject.setRawClasspath(newEntries, null);
+			project.create(new NullProgressMonitor())
+			configureAsJavaProject(project)
 		} catch (CoreException e) {
-			return false;
+			return false
 		}
-		return true;
+		return true
 	}
 
 	/**
@@ -112,8 +139,6 @@ class IProjectUtil {
 	 * @throws IllegalStateException if the project already exists
 	 */
 	def static boolean createJavaProject(String projectName) {
-		val project = getWorkspaceProject(projectName);
-		return createJavaProject(project);
+		getWorkspaceProject(projectName).createJavaProject()
 	}
-
 }
