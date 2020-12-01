@@ -13,19 +13,16 @@ import org.eclipse.jdt.launching.JavaRuntime
 import static com.google.common.base.Preconditions.checkState
 import org.eclipse.core.internal.resources.ProjectDescription
 import java.nio.file.Path
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * A utility class providing extension methods for IProjects
- * 
  */
+@Utility
 class IProjectUtil {
 	public static val JAVA_SOURCE_FOLDER = Path.of('src')
 	public static val JAVA_BIN_FOLDER = Path.of('bin')
 	
-	/** Utility classes should not have a public or default constructor. */
-	private new() {
-	}
-
 	def static IFolder createFolderInProjectIfNecessary(IProject project, String folderName) {
 		val pattern = Pattern.compile(Pattern.quote(File.separator))
 		val folderNames = pattern.split(folderName)
