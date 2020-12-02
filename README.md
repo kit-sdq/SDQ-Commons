@@ -2,7 +2,7 @@
 
 This repository contains commons projects providing utility functionality that is not project-specific.
 
-Install from [nightly update site](https://kit-sdq.github.io/updatesite/release/commons) (only for use via "Install Software" in Eclipse)
+Install from [nightly update site](https://kit-sdq.github.io/updatesite/nightly/commons) (only for use via "Install Software" in Eclipse)
 
 ## Project Development
 

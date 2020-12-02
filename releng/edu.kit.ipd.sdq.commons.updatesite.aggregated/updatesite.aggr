@@ -23,7 +23,7 @@
       <repositories location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/releases/latest/">
         <features name="org.modelversioning.emfprofile.feature.feature.group" versionRange="1.0.0"/>
       </repositories>
-      <repositories location="https://kit-sdq.github.io/updatesite/release/xannotations" mirrorArtifacts="false">
+      <repositories location="https://kit-sdq.github.io/updatesite/nightly/xannotations" mirrorArtifacts="false">
         <features name="edu.kit.ipd.sdq.activextendannotations.feature.feature.group" versionRange="[1.2.0,2.0.0)"/>
       </repositories>
     </contributions>
