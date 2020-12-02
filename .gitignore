@@ -7,3 +7,4 @@ tmp/
 *.swp
 *.class
 target/
+.mvn/wrapper/maven-wrapper.jar
