@@ -45,19 +45,9 @@
 				<configuration>
 					<repositories>
 						<repository>
-							<id>Eclipse 4.10 (2018-12)</id>
-							<layout>p2</layout>
-							<url>http://download.eclipse.org/releases/2018-12</url>
-						</repository>
-						<repository>
-							<id>Eclipse 4.10 Updates</id>
-							<layout>p2</layout>
-							<url>http://download.eclipse.org/eclipse/updates/4.10</url>
-						</repository>
-						<repository>
 							<id>Eclipse CBI Aggregator</id>
 							<layout>p2</layout>
-							<url>http://download.eclipse.org/cbi/updates/aggregator/ide/4.8/</url>
+							<url>http://download.eclipse.org/cbi/updates/aggregator/ide/4.13/</url>
 						</repository>
 					</repositories>
 					<jvmArgs>
