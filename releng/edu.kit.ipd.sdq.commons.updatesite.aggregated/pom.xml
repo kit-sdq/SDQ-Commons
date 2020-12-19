@@ -44,6 +44,11 @@
 				<configuration>
 					<repositories>
 						<repository>
+							<id>Eclipse</id>
+							<layout>p2</layout>
+							<url>http://download.eclipse.org/releases/2020-12</url>
+						</repository>
+						<repository>
 							<id>Eclipse CBI Aggregator</id>
 							<layout>p2</layout>
 							<url>http://download.eclipse.org/cbi/updates/aggregator/ide/4.13/</url>
@@ -73,7 +78,7 @@
 						<dependency>
 							<artifactId>org.eclipse.cbi.p2repo.aggregator.editor.feature</artifactId>
 							<type>eclipse-feature</type>
-						</dependency>                 
+						</dependency>
 					</dependencies>
 				</configuration>
 				<executions>
@@ -85,7 +90,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 </project>
