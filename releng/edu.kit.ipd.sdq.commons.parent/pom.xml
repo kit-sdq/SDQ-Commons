@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.kit.ipd.sdq</groupId>
 	<artifactId>parent</artifactId>
@@ -57,7 +57,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -86,7 +86,17 @@
 				<version>${tycho.version}</version>
 				<extensions>true</extensions>
 			</plugin>
-			
+
+			<!-- Use Tycho compiler without project-specific settings -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<useProjectSettings>false</useProjectSettings>
+				</configuration>
+			</plugin>
+
 			<!-- Creates source versions of bundles -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -101,7 +111,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<!-- Creates source versions of features -->
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
@@ -117,7 +127,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<!-- Correctly handles source features on p2 update site -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
