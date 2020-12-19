@@ -5,7 +5,7 @@ Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.java
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.java
 Bundle-Version: 1.7.0.qualifier
 Bundle-Vendor: SDQ
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
