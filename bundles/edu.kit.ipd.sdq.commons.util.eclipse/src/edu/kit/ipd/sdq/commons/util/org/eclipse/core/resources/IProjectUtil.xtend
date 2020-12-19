@@ -11,7 +11,6 @@ import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.jdt.launching.JavaRuntime
 import static com.google.common.base.Preconditions.checkState
-import org.eclipse.core.internal.resources.ProjectDescription
 import java.nio.file.Path
 import edu.kit.ipd.sdq.activextendannotations.Utility
 
@@ -56,8 +55,7 @@ class IProjectUtil {
 	def static createProjectAt(String projectName, Path projectLocation) {
 		getWorkspaceProject(projectName) => [
 			checkState(!exists, '''The project «projectName» already exists!''')
-			create(new ProjectDescription => [
-				name = projectName
+			create(workspace.newProjectDescription(projectName) => [
 				location = new org.eclipse.core.runtime.Path(projectLocation.toString)
 			], null)
 		]
