@@ -47,7 +47,7 @@ class MapUtil {
 	}
 	
 	static final def <K,V,R> List<R> mapFixed(Map<K,V> map, Function2<? super K, ? super V, ? extends R> transformation) {
-		val List<R> list = new ArrayList()
+		val List<R> list = new ArrayList(map.entrySet.size)
 		for (mapEntry : map.entrySet) {
 			list.add(transformation.apply(mapEntry.key, mapEntry.value))
 		}
