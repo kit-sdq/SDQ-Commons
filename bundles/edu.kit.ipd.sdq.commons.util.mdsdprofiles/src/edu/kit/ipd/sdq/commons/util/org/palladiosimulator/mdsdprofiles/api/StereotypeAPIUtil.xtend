@@ -4,7 +4,7 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 
 import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.EObjectUtil.getFeatureValues
-import static extension edu.kit.ipd.sdq.commons.util.java.util.ListUtil.mapFixed
+import static extension edu.kit.ipd.sdq.commons.util.java.lang.IterableUtil.mapFixed
 import static extension org.palladiosimulator.mdsdprofiles.api.StereotypeAPI.*
 import org.modelversioning.emfprofileapplication.StereotypeApplication
 import edu.kit.ipd.sdq.activextendannotations.Utility
@@ -49,7 +49,7 @@ class StereotypeAPIUtil {
 	}
 	
 	def static <T> List<T> getTaggedValues(Iterable<StereotypeApplication> applications, String featureName, Class<T> tagType) {
-		return applications.mapFixed[it.getFeatureValues(featureName)].flatten().mapFixed[tagType.cast(it)]
+		return applications.map[it.getFeatureValues(featureName)].flatten().mapFixed[tagType.cast(it)]
 	}
 	
 	/**
