@@ -1,9 +1,7 @@
 package edu.kit.ipd.sdq.commons.util.java.lang
 
-import org.eclipse.xtext.xbase.lib.Functions.Function1
 import java.util.List
 import java.util.ArrayList
-import java.util.function.Function
 import java.util.function.Predicate
 import java.util.Map
 import java.util.HashMap
@@ -15,17 +13,17 @@ import edu.kit.ipd.sdq.activextendannotations.Utility
  */
 @Utility
 class IterableUtil {
-	static final def <T, R> List<R> mapFixed(Iterable<T> original, Function1<? super T, ? extends R> transformation) {
+	static final def <T, R> List<R> mapFixed(Iterable<T> original, (T)=>R transformation) {
 		val target = if (original instanceof Collection<?>) new ArrayList(original.size) else new ArrayList()
 		mapFixedTo(original, target, transformation)
 	}
 
-	static final def <T, R> List<R> mapFixed(Collection<T> original, Function1<? super T, ? extends R> transformation) {
+	static final def <T, R> List<R> mapFixed(Collection<T> original, (T)=>R transformation) {
 		mapFixedTo(original, new ArrayList(original.size), transformation)
 	}
 
 	static final def <T, R, C extends Collection<R>> C mapFixedTo(Iterable<T> original, C target,
-		Function1<? super T, ? extends R> transformation) {
+		(T)=>R transformation) {
 		for (T o : original) {
 			target.add(transformation.apply(o))
 		}
@@ -155,7 +153,7 @@ class IterableUtil {
 	 * 		{@code indexer} on each value in the input iterable to that 
 	 * 		value.
 	 */
-	def static <A, B> Map<A, B> indexedBy(Iterable<B> iterable, Function<B, A> indexer) {
+	def static <A, B> Map<A, B> indexedBy(Iterable<B> iterable, (B)=>A indexer) {
 		val result = if (iterable instanceof Collection<?>) {
 				new HashMap(iterable.size)
 			} else {
