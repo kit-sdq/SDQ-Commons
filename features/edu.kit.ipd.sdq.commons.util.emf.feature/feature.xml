@@ -2,7 +2,7 @@
 <feature
       id="edu.kit.ipd.sdq.commons.util.emf.feature"
       label="%featureName"
-      version="1.8.0"
+      version="1.9.0.qualifier"
       provider-name="%providerName">
 
    <description>
