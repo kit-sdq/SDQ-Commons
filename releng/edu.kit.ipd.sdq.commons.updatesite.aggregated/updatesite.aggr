@@ -6,25 +6,25 @@
     </contributions>
     <contributions label="externals">
       <repositories location="http://download.eclipse.org/releases/2020-12/" mirrorArtifacts="false">
-        <features name="org.eclipse.emf.ecore.feature.group" versionRange="2.22.0"/>
-        <features name="org.eclipse.emf.ecore.edit.feature.group" versionRange="2.14.0"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.22.0"/>
-        <features name="org.eclipse.emf.common.feature.group" versionRange="2.20.0"/>
-        <features name="org.eclipse.emf.transaction.feature.group" versionRange="1.10.0"/>
-        <features name="org.eclipse.platform.feature.group" versionRange="4.16.0"/>
-        <features name="org.eclipse.xtext.xbase.feature.group" versionRange="2.22.0"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.22.0"/>
-        <features name="org.eclipse.xtext.ui.feature.group" versionRange="2.22.0"/>
+        <features name="org.eclipse.emf.ecore.feature.group"/>
+        <features name="org.eclipse.emf.ecore.edit.feature.group"/>
+        <features name="org.eclipse.xtend.sdk.feature.group"/>
+        <features name="org.eclipse.emf.common.feature.group"/>
+        <features name="org.eclipse.emf.transaction.feature.group"/>
+        <features name="org.eclipse.platform.feature.group"/>
+        <features name="org.eclipse.xtext.xbase.feature.group"/>
+        <features name="org.eclipse.xtext.sdk.feature.group"/>
+        <features name="org.eclipse.xtext.ui.feature.group"/>
       </repositories>
       <repositories location="https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/4.3.0/">
-        <features name="org.palladiosimulator.mdsdprofiles.feature.feature.group" versionRange="4.3.0"/>
-        <features name="org.palladiosimulator.pcm.feature.feature.group" versionRange="4.3.0"/>
+        <features name="org.palladiosimulator.mdsdprofiles.feature.feature.group"/>
+        <features name="org.palladiosimulator.pcm.feature.feature.group"/>
       </repositories>
       <repositories location="https://updatesite.palladio-simulator.com/palladio-thirdparty-emfprofiles/releases/4.3.0/">
-        <features name="org.modelversioning.emfprofile.feature.feature.group" versionRange="1.0.0"/>
+        <features name="org.modelversioning.emfprofile.feature.feature.group"/>
       </repositories>
-      <repositories location="https://kit-sdq.github.io/updatesite/nightly/xannotations" mirrorArtifacts="false">
-        <features name="edu.kit.ipd.sdq.activextendannotations.feature.feature.group" versionRange="[1.5.0,2.0.0)"/>
+      <repositories location="https://kit-sdq.github.io/updatesite/release/xannotations/1.4.0/" mirrorArtifacts="false">
+        <features name="edu.kit.ipd.sdq.activextendannotations.feature.feature.group"/>
       </repositories>
     </contributions>
   </validationSets>
