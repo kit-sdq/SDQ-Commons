@@ -35,7 +35,7 @@
 		<repository>
 			<id>XAnnotations</id>
 			<layout>p2</layout>
-			<url>https://kit-sdq.github.io/updatesite/release/xannotations</url>
+			<url>https://kit-sdq.github.io/updatesite/release/xannotations/1.4.0/</url>
 		</repository>
 	</repositories>
 
