@@ -29,7 +29,19 @@ class IterableUtil {
 		}
 		return target
 	}
-	
+
+	static final def <T, R> List<R> flatMapFixed(Iterable<T> original, (T)=>Iterable<? extends R> transformation) {
+		flatMapFixedTo(original, new ArrayList(), transformation)
+	}
+
+	static final def <T, R, C extends Collection<R>> C flatMapFixedTo(Iterable<T> original, C target,
+		(T)=>Iterable<? extends R> transformation) {
+		for (T o : original) {
+			target.addAll(transformation.apply(o))
+		}
+		return target
+	}
+
 	static final def <T, R> List<R> mapFixedIndexed(Iterable<T> original, (Integer, T)=>R transformation) {
 		val target = if (original instanceof Collection<?>) new ArrayList(original.size) else new ArrayList()
 		mapFixedIndexedTo(original, target, transformation)
@@ -43,6 +55,19 @@ class IterableUtil {
 		(Integer, T)=>R transformation) {
 		for (var i = 0, val iterator = original.iterator(); iterator.hasNext(); i += 1) {
 			target.add(transformation.apply(i, iterator.next()))
+		}
+		return target
+	}
+
+	static final def <T, R> List<R> flatMapFixedIndexed(Iterable<T> original,
+		(Integer, T)=>Iterable<? extends R> transformation) {
+		flatMapFixedIndexedTo(original, new ArrayList(original.size), transformation)
+	}
+
+	static final def <T, R, C extends Collection<R>> flatMapFixedIndexedTo(Iterable<T> original, C target,
+		(Integer, T)=>Iterable<? extends R> transformation) {
+		for (var i = 0, val iterator = original.iterator(); iterator.hasNext(); i += 1) {
+			target.addAll(transformation.apply(i, iterator.next()))
 		}
 		return target
 	}
