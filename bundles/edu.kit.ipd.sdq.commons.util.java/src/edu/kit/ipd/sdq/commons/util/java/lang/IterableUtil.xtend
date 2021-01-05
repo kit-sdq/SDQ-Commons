@@ -29,6 +29,23 @@ class IterableUtil {
 		}
 		return target
 	}
+	
+	static final def <T, R> List<R> mapFixedIndexed(Iterable<T> original, (Integer, T)=>R transformation) {
+		val target = if (original instanceof Collection<?>) new ArrayList(original.size) else new ArrayList()
+		mapFixedIndexedTo(original, target, transformation)
+	}
+
+	static final def <T, R> List<R> mapFixedIndexed(Collection<T> original, (Integer, T)=>R transformation) {
+		mapFixedIndexedTo(original, new ArrayList(original.size), transformation)
+	}
+
+	static final def <T, R, C extends Collection<R>> mapFixedIndexedTo(Iterable<T> original, C target,
+		(Integer, T)=>R transformation) {
+		for (var i = 0, val iterator = original.iterator(); iterator.hasNext(); i += 1) {
+			target.add(transformation.apply(i, iterator.next()))
+		}
+		return target
+	}
 
 	/**
 	 * Returns the concatenated string representation of the elements in the given iterable. 
