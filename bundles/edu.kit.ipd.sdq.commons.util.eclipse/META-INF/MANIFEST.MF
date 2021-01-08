@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse Utilities
 Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.eclipse
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.eclipse
-Bundle-Version: 1.9.0.qualifier
+Bundle-Version: 1.9.0
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: com.google.guava,
