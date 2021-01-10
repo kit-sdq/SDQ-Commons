@@ -13,6 +13,7 @@ import org.eclipse.jdt.launching.JavaRuntime
 import static com.google.common.base.Preconditions.checkState
 import java.nio.file.Path
 import edu.kit.ipd.sdq.activextendannotations.Utility
+import org.eclipse.jdt.core.IJavaProject
 
 /**
  * A utility class providing extension methods for IProjects
@@ -71,7 +72,7 @@ class IProjectUtil {
 	 * @throws IllegalStateException if the project already exists
 	 * @throws CoreException if configuring the project fails
 	 */
-	def static configureAsJavaProject(IProject project) {
+	def static IJavaProject configureAsJavaProject(IProject project) {
 		// copied from:
 		// https://sdqweb.ipd.kit.edu/wiki/JDT_Tutorial:_Creating_Eclipse_Java_Projects_Programmatically
 		project.open(new NullProgressMonitor())
@@ -100,6 +101,7 @@ class IProjectUtil {
 		java.lang.System.arraycopy(oldEntries, 0, newEntries, 0, oldEntries.length)
 		newEntries.set(oldEntries.length, JavaCore.newSourceEntry(root.getPath()))
 		javaProject.setRawClasspath(newEntries, null)
+		return javaProject
 	}
 
 	/**
