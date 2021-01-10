@@ -22,7 +22,7 @@ import org.eclipse.jdt.core.IJavaProject
 class IProjectUtil {
 	public static val JAVA_SOURCE_FOLDER = Path.of('src')
 	public static val JAVA_BIN_FOLDER = Path.of('bin')
-	
+
 	def static IFolder createFolderInProjectIfNecessary(IProject project, String folderName) {
 		val pattern = Pattern.compile(Pattern.quote(File.separator))
 		val folderNames = pattern.split(folderName)
@@ -77,8 +77,13 @@ class IProjectUtil {
 		// https://sdqweb.ipd.kit.edu/wiki/JDT_Tutorial:_Creating_Eclipse_Java_Projects_Programmatically
 		project.open(new NullProgressMonitor())
 		val description = project.getDescription()
-		description.setNatureIds(#{JavaCore.NATURE_ID})
+		val currentNatureIds = description.natureIds
+		val newNatureIds = newArrayOfSize(currentNatureIds.length + 1)
+		System.arraycopy(currentNatureIds, 0, newNatureIds, 0, currentNatureIds.length)
+		newNatureIds.set(currentNatureIds.length, JavaCore.NATURE_ID)
+		description.setNatureIds(newNatureIds)
 		project.setDescription(description, null)
+		
 		val javaProject = JavaCore.create(project)
 		val binFolder = project.getFolder(JAVA_BIN_FOLDER.toString())
 		binFolder.create(false, true, null)
