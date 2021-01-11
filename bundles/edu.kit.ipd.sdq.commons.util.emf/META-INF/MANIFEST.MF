@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EMF Util
 Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.emf
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.emf
-Bundle-Version: 1.10.0
+Bundle-Version: 1.11.0.qualifier
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: com.google.guava,
