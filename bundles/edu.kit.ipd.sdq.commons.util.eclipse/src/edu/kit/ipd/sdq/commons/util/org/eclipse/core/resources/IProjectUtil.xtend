@@ -1,46 +1,47 @@
 package edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources
 
+import edu.kit.ipd.sdq.activextendannotations.Utility
+import java.nio.file.Path
+import org.eclipse.core.resources.IContainer
 import org.eclipse.core.resources.IFolder
 import org.eclipse.core.resources.IProject
-import java.util.regex.Pattern
-import java.io.File
-import org.eclipse.core.runtime.NullProgressMonitor
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.resources.IContainer
 import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.jdt.core.JavaCore
-import org.eclipse.jdt.launching.JavaRuntime
-import static com.google.common.base.Preconditions.checkState
-import java.nio.file.Path
-import edu.kit.ipd.sdq.activextendannotations.Utility
+import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.jdt.core.IClasspathAttribute
 import org.eclipse.jdt.core.IJavaProject
+import org.eclipse.jdt.core.JavaCore
+
+import static com.google.common.base.Preconditions.checkState
+import static org.eclipse.jdt.core.IClasspathEntry.CPE_SOURCE
+
+import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources.IPathUtil.*
+import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources.IResourceUtil.*
+import org.eclipse.jdt.ui.PreferenceConstants
 
 /**
  * A utility class providing extension methods for IProjects
  */
 @Utility
 class IProjectUtil {
+	/**
+	 * Relative path to the folder that will be configured as source folder for Java projects.
+	 */
 	public static val JAVA_SOURCE_FOLDER = Path.of('src')
+	/**
+	 * Relative path to the folder that will be configured as output folder for Java projects.
+	 */
 	public static val JAVA_BIN_FOLDER = Path.of('bin')
+	/**
+	 * Relative path to the folder that can optionally be configured as output folder for generated sources for Java
+	 * projects.
+	 */
+	public static val SOURCE_GEN_FOLDER = Path.of('src-gen')
 
 	def static IFolder createFolderInProjectIfNecessary(IProject project, String folderName) {
-		val pattern = Pattern.compile(Pattern.quote(File.separator))
-		val folderNames = pattern.split(folderName)
-		var IContainer currentContainer = project
-		var IFolder folder = null
-		for (folderNamePart : folderNames) {
-			folder = currentContainer.getFolder(new org.eclipse.core.runtime.Path(folderNamePart))
-			if (!folder.exists()) {
-				try {
-					folder.create(true, true, new NullProgressMonitor())
-				} catch (CoreException e) {
-					// soften
-					throw new RuntimeException(e)
-				}
-			}
-			currentContainer = folder
-		}
-		return folder
+		return Path.of(folderName).fold(project as IContainer) [ lastFolder, newPart |
+			lastFolder.getFolder(newPart.eclipsePath).createIfNotExists()
+		] as IFolder
 	}
 
 	/**
@@ -57,55 +58,69 @@ class IProjectUtil {
 		getWorkspaceProject(projectName) => [
 			checkState(!exists, '''The project «projectName» already exists!''')
 			create(workspace.newProjectDescription(projectName) => [
-				location = new org.eclipse.core.runtime.Path(projectLocation.toString)
+				location = projectLocation.eclipsePath
 			], null)
 		]
 	}
 
 	/**
 	 * Configures the given {@link IProject} to be a java project, i.e. adds the Java nature
-	 * and a {@link #JAVA_SOURCE_FOLDER} to the project and registers the Java standard library.
+	 * and a {@link #JAVA_SOURCE_FOLDER} to the project and registers workpace’s default JRE. If the project already
+	 * is a Java project, it will be adapted to have {@link #JAVA_BIN_FOLDER} as output location and its classpath be
+	 * appended to include the {@link #JAVA_SOURCE_FOLDER} and the workspace’s default JRE. All other settings will stay
+	 *  intact.
 	 * <br>
-	 * To create the expected {@link IProject}, {@link #getWorkspaceProject IProjectUtil.getWorkspaceProject} can be used.
+	 * To create the expected {@link IProject}, {@link #createWorkspaceProject} can be used.
 	 * 
 	 * @param project - the {@link IProject} to initialize as a Java project
-	 * @throws IllegalStateException if the project already exists
 	 * @throws CoreException if configuring the project fails
 	 */
 	def static IJavaProject configureAsJavaProject(IProject project) {
-		// copied from:
-		// https://sdqweb.ipd.kit.edu/wiki/JDT_Tutorial:_Creating_Eclipse_Java_Projects_Programmatically
 		project.open(new NullProgressMonitor())
 		val description = project.getDescription()
 		val currentNatureIds = description.natureIds
-		val newNatureIds = newArrayOfSize(currentNatureIds.length + 1)
-		System.arraycopy(currentNatureIds, 0, newNatureIds, 0, currentNatureIds.length)
-		newNatureIds.set(currentNatureIds.length, JavaCore.NATURE_ID)
-		description.setNatureIds(newNatureIds)
-		project.setDescription(description, null)
-		
-		val javaProject = JavaCore.create(project)
-		val binFolder = project.getFolder(JAVA_BIN_FOLDER.toString())
-		binFolder.create(false, true, null)
-		javaProject.setOutputLocation(binFolder.getFullPath(), null)
-		val entries = newArrayList()
-		val vmInstall = JavaRuntime.getDefaultVMInstall()
-		if (null !== vmInstall) {
-			val locations = JavaRuntime.getLibraryLocations(vmInstall)
-			for (element : locations) {
-				entries.add(JavaCore.newLibraryEntry(element.getSystemLibraryPath(), null, null))
-			}
+
+		if (!description.natureIds.contains(JavaCore.NATURE_ID)) {
+			val newNatureIds = newArrayOfSize(currentNatureIds.length + 1)
+			System.arraycopy(currentNatureIds, 0, newNatureIds, 0, currentNatureIds.length)
+			newNatureIds.set(currentNatureIds.length, JavaCore.NATURE_ID)
+			description.setNatureIds(newNatureIds)
+			project.setDescription(description, null)
 		}
-		// Add libs to project class path
-		javaProject.setRawClasspath(entries.toArray(newArrayOfSize(entries.size())), null)
-		val sourceFolder = project.getFolder(JAVA_SOURCE_FOLDER.toString())
-		sourceFolder.create(false, true, null)
-		val root = javaProject.getPackageFragmentRoot(sourceFolder)
-		val oldEntries = javaProject.getRawClasspath()
-		val newEntries = newArrayOfSize(oldEntries.length + 1)
-		java.lang.System.arraycopy(oldEntries, 0, newEntries, 0, oldEntries.length)
-		newEntries.set(oldEntries.length, JavaCore.newSourceEntry(root.getPath()))
-		javaProject.setRawClasspath(newEntries, null)
+
+		val javaProject = JavaCore.create(project)
+
+		val binFolder = project.getFolder(JAVA_BIN_FOLDER.eclipsePath).createIfNotExists()
+		javaProject.setOutputLocation(binFolder.fullPath, null)
+
+		val newClasspath = javaProject.rawClasspath.filter[entryKind != CPE_SOURCE || path != project.fullPath].toSet
+		newClasspath += PreferenceConstants.defaultJRELibrary
+
+		val sourceFolder = project.getFolder(JAVA_SOURCE_FOLDER.eclipsePath).createIfNotExists()
+		newClasspath += JavaCore.newSourceEntry(sourceFolder.fullPath)
+
+		javaProject.setRawClasspath(newClasspath, null)
+
+		return javaProject
+	}
+
+	/**
+	 * Adds a source entry for the {@link #SOURCE_GEN_FOLDER} to the provided {@code javaProject} if it does not exist
+	 * yet.
+	 */
+	def static IJavaProject configureSrcGenFolder(IJavaProject javaProject) {
+		val srcGenFolder = javaProject.project.getFolder(SOURCE_GEN_FOLDER.eclipsePath).createIfNotExists()
+
+		val oldClasspath = javaProject.rawClasspath
+		if (!oldClasspath.exists[entryKind != CPE_SOURCE || path != srcGenFolder.fullPath]) {
+			val newClasspath = newArrayOfSize(oldClasspath.length + 1)
+			System.arraycopy(oldClasspath, 0, newClasspath, 0, oldClasspath.length)
+			val srcGenEntry = JavaCore.newSourceEntry(srcGenFolder.fullPath, newArrayOfSize(0), newArrayOfSize(0), null,
+				#[JavaCore.newClasspathAttribute(IClasspathAttribute.IGNORE_OPTIONAL_PROBLEMS, 'true')])
+			newClasspath.set(oldClasspath.length, srcGenEntry)
+			javaProject.setRawClasspath(newClasspath, null)
+		}
+
 		return javaProject
 	}
 
