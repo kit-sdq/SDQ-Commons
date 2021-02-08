@@ -61,7 +61,7 @@ class IterableUtil {
 
 	static final def <T, R> List<R> flatMapFixedIndexed(Iterable<T> original,
 		(Integer, T)=>Iterable<? extends R> transformation) {
-		flatMapFixedIndexedTo(original, new ArrayList(original.size), transformation)
+		flatMapFixedIndexedTo(original, new ArrayList(), transformation)
 	}
 
 	static final def <T, R, C extends Collection<R>> flatMapFixedIndexedTo(Iterable<T> original, C target,
