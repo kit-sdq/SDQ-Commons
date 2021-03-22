@@ -18,12 +18,19 @@ import static org.eclipse.jdt.core.IClasspathEntry.CPE_SOURCE
 import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources.IPathUtil.*
 import static extension edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources.IResourceUtil.*
 import org.eclipse.jdt.ui.PreferenceConstants
+import org.eclipse.core.resources.IncrementalProjectBuilder
+import org.eclipse.core.resources.ICommand
+import org.eclipse.core.resources.IResource
+import static com.google.common.base.Preconditions.checkArgument
+import org.apache.log4j.Logger
 
 /**
  * A utility class providing extension methods for IProjects
  */
 @Utility
 class IProjectUtil {
+	static val LOGGER = Logger.getLogger(IProjectUtil)
+
 	/**
 	 * Relative path to the folder that will be configured as source folder for Java projects.
 	 */
@@ -158,4 +165,99 @@ class IProjectUtil {
 	def static boolean createJavaProject(String projectName) {
 		getWorkspaceProject(projectName).createJavaProject()
 	}
+
+	/**
+	 * Performs an incremental build of the builder with the given ID for all open
+	 * {@link IProject}s in the workspace of the workbench.
+	 * 
+	 * @param builderId -
+	 * 		the ID of the builder to run
+	 * @throws IllegalStateException if some error occurs during build
+	 */
+	def static void buildAllProjectsIncrementally(String builderId) throws IllegalStateException {
+		for (IProject project : ResourcesPlugin.workspace.root.projects) {
+			if (project.open && hasBuilder(project, builderId)) {
+				buildIncrementally(project, builderId)
+			}
+		}
+	}
+
+	/**
+	 * Performs an incremental build of the builder with the given ID in the given
+	 * {@link IProject}. The project must not be <code>null</code> and must be open.
+	 * 
+	 * @param project -
+	 * 		the {@link IProject} to build
+	 * @param builderId -
+	 * 		the ID of the builder to run
+	 * @throws IllegalStateException if some error occurs during build
+	 */
+	def static void buildIncrementally(IProject project, String builderId) throws IllegalStateException {
+		checkArgument(project !== null, "project must not be null")
+		checkState(project.open, "project %s must be open to built", project.name)
+		if(LOGGER.isDebugEnabled) LOGGER.debug("Run builder " + builderId + " for project " + project.name)
+		try {
+			project.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, builderId, null, null)
+		} catch (CoreException e) {
+			val message = "Could not run builder " + builderId + " for project " + project.name
+			LOGGER.error(message, e)
+			throw new IllegalStateException(message, e)
+		}
+	}
+
+	/**
+	 * Refreshes the given project and performs an incremental build. The project
+	 * must not be <code>null</code> and must be open.
+	 * 
+	 * @param project -
+	 * 		the {@link IProject} to refresh and build
+	 * @throws IllegalStateException if some error occurs during refresh or build
+	 */
+	def static void refreshAndBuildIncrementally(IProject project) {
+		checkArgument(project !== null, "project must not be null")
+		checkState(project.open, "project %s must be open to be refreshed and built", project.name)
+		if(LOGGER.isDebugEnabled) LOGGER.debug("Refresh and build project " + project.name)
+		try {
+			project.refreshLocal(IResource.DEPTH_INFINITE, null)
+		} catch (CoreException e) {
+			val message = "Could not refresh project " + project.name
+			LOGGER.error(message, e)
+			throw new IllegalStateException(message, e)
+		}
+		try {
+			project.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, null)
+		} catch (CoreException e) {
+			val message = "Could not build project " + project.name
+			LOGGER.error(message, e)
+			throw new IllegalStateException(message, e)
+		}
+	}
+
+	/**
+	 * Checks whether the given {@link IProject} has a builder with the given ID. The project
+	 * must not be <code>null</code> and must be open.
+	 * 
+	 * @param project -
+	 * 		the {@link IProject} to check for the builder
+	 * @param builderId -
+	 * 		the ID of the builder to check to project for
+	 * @return whether the project has a builder with the given ID
+	 */
+	def static boolean hasBuilder(IProject project, String builderId) {
+		checkArgument(project !== null, "project must not be null")
+		checkState(project.open, "project %s must be open", project.name)
+		try {
+			for (ICommand buildSpec : project.description.buildSpec) {
+				if (builderId == buildSpec.builderName) {
+					return true
+				}
+			}
+		} catch (CoreException e) {
+			val message = "Could not read description of project " + project.name
+			LOGGER.error(message, e)
+			throw new IllegalStateException(message, e)
+		}
+		return false
+	}
+
 }
