@@ -16,5 +16,6 @@ Require-Bundle: com.google.guava,
  org.eclipse.jdt.core,
  org.eclipse.jdt.launching,
  edu.kit.ipd.sdq.activextendannotations,
- org.eclipse.jdt.ui
+ org.eclipse.jdt.ui,
+ org.apache.log4j
 Export-Package: edu.kit.ipd.sdq.commons.util.org.eclipse.core.resources
