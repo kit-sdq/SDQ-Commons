@@ -122,4 +122,16 @@ class URIUtil {
 	def static boolean isPathmap(URI uri) {
 		return uri.toString.startsWith("pathmap");
 	}
+
+	/**
+	 * Creates and returns an EMF file {@link URI} for the given {@link File}.
+	 * 
+	 * @param file
+	 *            the file to get the EMF {@link URI} for
+	 * @return the EMF file URI for the given {@link File}
+	 */
+	static def URI createFileURI(File file) {
+		return URI.createFileURI(file.getAbsolutePath());
+	}
+	
 }
