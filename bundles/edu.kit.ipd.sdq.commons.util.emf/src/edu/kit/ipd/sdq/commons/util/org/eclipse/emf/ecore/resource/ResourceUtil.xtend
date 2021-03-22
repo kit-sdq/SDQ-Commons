@@ -10,11 +10,11 @@ import java.util.List
 @Utility
 class ResourceUtil {
 	 /**
-     * Returns an iterable for iterating over all direct and indirect contents of the given Resource.
+     * Returns an {@link Iterable} for iterating over all direct and indirect contents of the given {@link Resource}.
      *
-     * @param resource
-     *            container Resource
-     * @return a direct and indirect content iterating iterable
+     * @param resource -
+     *		the {@link Resource} to get the contents {@link Iterable} for
+     * @return a direct and indirect contents iterating {@link Iterable}
      *
      * @see org.eclipse.emf.ecore.Resource#eAllContents() Resource.eAllContents()
      */
@@ -27,8 +27,8 @@ class ResourceUtil {
 	 * Returns the first root element of the given {@link Resource}. It is <i>not</i> necessary to have exactly 
 	 * one root element. If there is not at least one root element, an {@link IllegalStateException} is thrown.
 	 * 
-	 * @param resource 
-	 * 			a resource to retrieve the first root element from
+	 * @param resource -
+	 *		a {@link Resource} to retrieve the first root element from
 	 * @return the root element
 	 */
 	def static EObject getFirstRootEObject(Resource resource) {
@@ -41,9 +41,9 @@ class ResourceUtil {
 	 * Retrieves all proxy {@link EObject}s referenced within the given {@link Resource}, i.e. elements being proxies
 	 * that are referenced by any element contained within the given {@link Resource}	 * 
 	 * 
-	 * @param resource 
-	 * 			the resource to find the referenced proxy elements in
-	 * @return the root element
+	 * @param resource - 
+	 *		the resource to find the referenced proxy elements in
+	 * @return the proxy elements referenced in the given {@link Resource}
 	 */
 	def static Iterable<EObject> getReferencedProxies(Resource resource) {
 		checkArgument(resource !== null, "resource must not be null")
