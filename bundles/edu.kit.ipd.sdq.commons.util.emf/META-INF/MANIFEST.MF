@@ -19,6 +19,4 @@ Require-Bundle: com.google.guava,
  edu.kit.ipd.sdq.activextendannotations
 Export-Package: edu.kit.ipd.sdq.commons.util.org.eclipse.emf.common.util,
  edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore,
- edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change,
- edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.change.impl,
  edu.kit.ipd.sdq.commons.util.org.eclipse.emf.ecore.resource
