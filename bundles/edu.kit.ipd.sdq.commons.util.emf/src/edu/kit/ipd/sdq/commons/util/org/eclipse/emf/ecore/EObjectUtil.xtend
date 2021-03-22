@@ -23,7 +23,6 @@ class EObjectUtil {
 		return getFeatureValues(eObject, feature)
 	}
 	
-	// FIXME MK replace calls to EcoreBridge.getFeatureValuesIfManyTyped with calls to this method
 	/**
 	 * Returns the list of values for the given feature of the given eObject if it is multi-valued and <code>null</code> otherwise.
 	 */
@@ -40,7 +39,6 @@ class EObjectUtil {
 		}
 	}
 	
-	// FIXME MK replace calls to EcoreBridge.getFeatureValueIfNotManyTyped with calls to this method
 	/**
 	 * Returns the single value for the given feature of the given eObject if it is not multi-valued and <code>null</code> otherwise.
 	 */
