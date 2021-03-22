@@ -1,11 +1,6 @@
 package edu.kit.ipd.sdq.commons.util.org.eclipse.emf.common.util
 
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.resource.ResourceSet
-import java.util.Collections
-import java.util.Map
-import java.io.IOException
 import org.eclipse.core.resources.IFile
 import java.io.File
 import org.eclipse.core.runtime.IPath
@@ -19,45 +14,6 @@ import org.eclipse.core.resources.IResource
  */
 @Utility
 class URIUtil {
-	def static Resource loadResourceAtURI(URI resourceURI, ResourceSet resourceSet) {
-		return loadResourceAtURI(resourceURI, resourceSet, Collections.emptyMap())
-	}
-
-	def static Resource loadResourceAtURI(URI resourceURI, ResourceSet resourceSet, Map<Object, Object> loadOptions) {
-		var Resource resource = null
-		try {
-			var normalizedURI = resourceURI
-			if (!resourceURI.isFile() && !resourceURI.isPlatform()) {
-				normalizedURI = resourceSet.getURIConverter().normalize(resourceURI)
-			}
-
-			if (resourceSet.URIConverter.exists(normalizedURI, null)) {
-				resource = resourceSet.getResource(normalizedURI, true);
-			}
-
-			if (resource === null) {
-				val oldResource = resourceSet.getResource(normalizedURI, false);
-				if (oldResource !== null) {
-					oldResource.delete(null);
-				}
-				resource = resourceSet.createResource(normalizedURI);
-			} else {
-				resource.load(loadOptions);
-			}
-
-			// Fixes issue caused by JaMoPP: If a model is transitively loaded
-			// (e.g. because of an import) the URI starts with pathmap instead
-			// of
-			// the usual URI. If you try to load this model again the URI
-			// remains wrong.
-			resource.setURI(normalizedURI);
-		} catch (IOException e) {
-			// soften
-			throw new RuntimeException(e);
-		}
-		return resource;
-	}
-
 	/**
 	 * Return whether a resource exists at the specified {@link URI}. The given {@link URI} must be either a file or a platform URI.
 	 * 
