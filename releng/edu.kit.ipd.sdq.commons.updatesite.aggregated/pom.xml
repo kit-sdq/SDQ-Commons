@@ -46,7 +46,7 @@
 						<repository>
 							<id>Eclipse</id>
 							<layout>p2</layout>
-							<url>http://download.eclipse.org/releases/2020-12</url>
+							<url>${eclipse.updatesite}</url>
 						</repository>
 						<repository>
 							<id>Eclipse CBI Aggregator</id>
