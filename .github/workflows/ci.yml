@@ -3,8 +3,8 @@ name: CI
 on:
   push:
     branches: [main]
-  create:
-    tags:
+  release:
+    types: [created]
   pull_request:
   schedule:
     - cron: '0 3 * * *' # run nightly at 3:00 am
@@ -36,7 +36,7 @@ jobs:
         env: 
           MAVEN_OPTS: -Djansi.force=true
       - name: Publish Nightly Update Site
-        if: github.ref == 'refs/heads/main'
+        if: github.event_name != 'release' && github.ref == 'refs/heads/main' && github.repository_owner == 'kit-sdq'
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
@@ -44,19 +44,13 @@ jobs:
           destination_dir: nightly/commons
           publish_dir: releng/edu.kit.ipd.sdq.commons.updatesite.aggregated/target/final
           publish_branch: main
-      - name: Determine Release Version
-        if: startsWith(github.ref, 'refs/tags/releases/')
-        id: releaseVersion
-        uses: little-core-labs/get-git-tag@v3.0.2
-        with:
-           tagRegex: "releases/(.*)"
       - name: Publish Release Update Site
-        if: startsWith(github.ref, 'refs/tags/releases/')
+        if: github.event_name == 'release' && github.repository_owner == 'kit-sdq'
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
           external_repository: kit-sdq/updatesite
-          destination_dir: release/commons/${{ steps.releaseVersion.outputs.tag }}
+          destination_dir: release/commons/${{ github.event.release.tag_name }}
           publish_dir: releng/edu.kit.ipd.sdq.commons.updatesite.aggregated/target/final
           publish_branch: main
           
