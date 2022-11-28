@@ -5,7 +5,7 @@ Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.mdsdprofiles
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.mdsdprofiles
 Bundle-Version: 2.1.0.qualifier
 Bundle-Vendor: SDQ
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.xtext.generator,
  org.eclipse.emf.mwe2.launch,
  org.eclipse.xtext.builder,

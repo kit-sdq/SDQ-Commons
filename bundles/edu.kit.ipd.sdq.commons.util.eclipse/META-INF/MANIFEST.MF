@@ -5,7 +5,7 @@ Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.eclipse
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.eclipse
 Bundle-Version: 2.1.0.qualifier
 Bundle-Vendor: SDQ
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.xtend.lib,
  org.eclipse.core.resources,
  org.eclipse.core.runtime,
