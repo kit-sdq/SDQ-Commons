@@ -10,8 +10,8 @@
 
 	<properties>
 		<eclipse.updatesite>https://download.eclipse.org/releases/2022-06</eclipse.updatesite>
-		<palladio.updatesite>https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/4.3.0/</palladio.updatesite>
-		<palladio.emfprofiles.updatesite>https://updatesite.palladio-simulator.com/palladio-thirdparty-emfprofiles/releases/4.3.0/</palladio.emfprofiles.updatesite>
+		<palladio.updatesite>https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/5.0.0/</palladio.updatesite>
+		<palladio.emfprofiles.updatesite>https://updatesite.palladio-simulator.com/palladio-thirdparty-emfprofiles/releases/5.0.0/</palladio.emfprofiles.updatesite>
 		<xannotations.updatesite>https://kit-sdq.github.io/updatesite/release/xannotations/1.5.0/</xannotations.updatesite>
 		<maven.compiler.release>11</maven.compiler.release>
 		<maven-clean.version>3.2.0</maven-clean.version>
