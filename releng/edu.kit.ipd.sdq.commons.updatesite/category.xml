@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/edu.kit.ipd.sdq.commons.util.java.feature_2.1.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.java.feature" version="2.1.0.qualifier">
+   <feature url="features/edu.kit.ipd.sdq.commons.util.java.feature_2.2.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.java.feature" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature id="edu.kit.ipd.sdq.commons.util.java.feature.source" version="2.1.0.qualifier">
+   <feature id="edu.kit.ipd.sdq.commons.util.java.feature.source" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature url="features/edu.kit.ipd.sdq.commons.util.emf.feature_2.1.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.emf.feature" version="2.1.0.qualifier">
+   <feature url="features/edu.kit.ipd.sdq.commons.util.emf.feature_2.2.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.emf.feature" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature id="edu.kit.ipd.sdq.commons.util.emf.feature.source" version="2.1.0.qualifier">
+   <feature id="edu.kit.ipd.sdq.commons.util.emf.feature.source" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature url="features/edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature_2.1.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature" version="2.1.0.qualifier">
+   <feature url="features/edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature_2.2.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature id="edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature.source" version="2.1.0.qualifier">
+   <feature id="edu.kit.ipd.sdq.commons.util.mdsdprofiles.feature.source" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature url="features/edu.kit.ipd.sdq.commons.util.pcm.feature_2.1.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.pcm.feature" version="2.1.0.qualifier">
+   <feature url="features/edu.kit.ipd.sdq.commons.util.pcm.feature_2.2.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.pcm.feature" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature id="edu.kit.ipd.sdq.commons.util.pcm.feature.source" version="2.1.0.qualifier">
+   <feature id="edu.kit.ipd.sdq.commons.util.pcm.feature.source" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature url="features/edu.kit.ipd.sdq.commons.util.eclipse.feature_2.1.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.eclipse.feature" version="2.1.0.qualifier">
+   <feature url="features/edu.kit.ipd.sdq.commons.util.eclipse.feature_2.2.0.qualifier.jar" id="edu.kit.ipd.sdq.commons.util.eclipse.feature" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
-   <feature id="edu.kit.ipd.sdq.commons.util.eclipse.feature.source" version="2.1.0.qualifier">
+   <feature id="edu.kit.ipd.sdq.commons.util.eclipse.feature.source" version="2.2.0.qualifier">
       <category name="SDQ Commons"/>
    </feature>
    <category-def name="SDQ Commons" label="SDQ Commons">
