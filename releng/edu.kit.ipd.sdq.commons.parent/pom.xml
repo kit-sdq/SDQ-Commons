@@ -12,11 +12,11 @@
 		<eclipse.updatesite>https://download.eclipse.org/releases/2022-12</eclipse.updatesite>
 		<palladio.updatesite>https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/5.0.0/</palladio.updatesite>
 		<palladio.emfprofiles.updatesite>https://updatesite.palladio-simulator.com/palladio-thirdparty-emfprofiles/releases/5.0.0/</palladio.emfprofiles.updatesite>
-		<xannotations.updatesite>https://kit-sdq.github.io/updatesite/release/xannotations/1.5.0/</xannotations.updatesite>
+		<xannotations.updatesite>https://kit-sdq.github.io/updatesite/release/xannotations/1.6.0/</xannotations.updatesite>
 		<maven.compiler.release>17</maven.compiler.release>
 		<maven-clean.version>3.2.0</maven-clean.version>
 		<xtext.version>2.29.0</xtext.version>
-		<tycho.version>3.0.0</tycho.version>
+		<tycho.version>3.0.1</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
