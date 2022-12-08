@@ -43,7 +43,7 @@ jobs:
           external_repository: kit-sdq/updatesite
           destination_dir: nightly/commons
           publish_dir: releng/edu.kit.ipd.sdq.commons.updatesite.aggregated/target/final
-          publish_branch: main
+          publish_branch: master
       - name: Publish Release Update Site
         if: github.event_name == 'release' && github.repository_owner == 'kit-sdq'
         uses: peaceiris/actions-gh-pages@v3
@@ -52,6 +52,6 @@ jobs:
           external_repository: kit-sdq/updatesite
           destination_dir: release/commons/${{ github.event.release.tag_name }}
           publish_dir: releng/edu.kit.ipd.sdq.commons.updatesite.aggregated/target/final
-          publish_branch: main
+          publish_branch: master
           
 

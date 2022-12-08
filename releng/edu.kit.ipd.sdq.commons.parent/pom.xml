@@ -9,14 +9,14 @@
 	<name>SDQ Commons</name>
 
 	<properties>
-		<eclipse.updatesite>https://download.eclipse.org/releases/2022-06</eclipse.updatesite>
+		<eclipse.updatesite>https://download.eclipse.org/releases/2022-12</eclipse.updatesite>
 		<palladio.updatesite>https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/5.0.0/</palladio.updatesite>
 		<palladio.emfprofiles.updatesite>https://updatesite.palladio-simulator.com/palladio-thirdparty-emfprofiles/releases/5.0.0/</palladio.emfprofiles.updatesite>
-		<xannotations.updatesite>https://kit-sdq.github.io/updatesite/release/xannotations/1.5.0/</xannotations.updatesite>
-		<maven.compiler.release>11</maven.compiler.release>
+		<xannotations.updatesite>https://kit-sdq.github.io/updatesite/release/xannotations/1.6.0/</xannotations.updatesite>
+		<maven.compiler.release>17</maven.compiler.release>
 		<maven-clean.version>3.2.0</maven-clean.version>
-		<xtext.version>2.27.0</xtext.version>
-		<tycho.version>2.7.4</tycho.version>
+		<xtext.version>2.29.0</xtext.version>
+		<tycho.version>3.0.1</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -102,7 +102,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- Creates source versions of bundles -->
+			<!-- Creates source versions of bundles and features -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
@@ -114,20 +114,11 @@
 							<goal>plugin-source</goal>
 						</goals>
 					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Creates source versions of features -->
-			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
-				<version>${tycho.version}</version>
-				<executions>
 					<execution>
-						<id>source-feature</id>
+						<id>feature-source</id>
 						<phase>package</phase>
 						<goals>
-							<goal>source-feature</goal>
+							<goal>feature-source</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -172,10 +163,10 @@
 							<arch>x86_64</arch>
 						</environment>
 						<environment>
-								<os>macosx</os>
-								<ws>cocoa</ws>
-								<arch>aarch64</arch>
-							</environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>aarch64</arch>
+						</environment>
 					</environments>
 				</configuration>
 			</plugin>
