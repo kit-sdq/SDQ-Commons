@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Java Util
 Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.java
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.java
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.2.0
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: com.google.guava,
