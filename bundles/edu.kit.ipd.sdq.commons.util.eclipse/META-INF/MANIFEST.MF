@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse Utilities
 Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.eclipse
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.eclipse
-Bundle-Version: 2.2.0
+Bundle-Version: 2.3.0.qualifier
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.xtend.lib,

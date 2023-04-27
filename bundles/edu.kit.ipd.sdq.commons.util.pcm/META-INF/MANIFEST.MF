@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Utility methods for the PCM
 Bundle-SymbolicName: edu.kit.ipd.sdq.commons.util.pcm
 Automatic-Module-Name: edu.kit.ipd.sdq.commons.util.pcm
-Bundle-Version: 2.2.0
+Bundle-Version: 2.3.0.qualifier
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: com.google.guava,
